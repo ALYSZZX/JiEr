@@ -15,6 +15,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JButton;
 
 import com.jier.soft.Action.LoginAction;
+import com.jier.soft.Util.Centre;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -30,7 +31,9 @@ public class LoginFrame extends JFrame implements ActionListener{
 
 		contentPane = new NewPanel();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(500, 250, 861, 542);
+
+		//setBounds(500, 250, 861, 542);
+		Centre.Centre(this, 861, 542);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);

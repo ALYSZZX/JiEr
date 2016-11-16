@@ -1,4 +1,4 @@
-package com.jier.soft.entity;
+package com.jier.soft.gui;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
