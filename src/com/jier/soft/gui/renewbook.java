@@ -12,7 +12,7 @@ import java.awt.Color;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
 
-public class lendbook extends JFrame {
+public class renewbook extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
@@ -25,7 +25,7 @@ public class lendbook extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					lendbook frame = new lendbook();
+					renewbook frame = new renewbook();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -37,10 +37,10 @@ public class lendbook extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public lendbook() {
+	public renewbook() {
 		setBackground(Color.DARK_GRAY);
 		setResizable(false);
-		setTitle("\u501F\u4E66");
+		setTitle("\u7EED\u501F");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 737, 490);
 		contentPane = new JPanel();
@@ -66,15 +66,15 @@ public class lendbook extends JFrame {
 		textField_1.setBounds(92, 35, 135, 21);
 		contentPane.add(textField_1);
 		
-		JLabel label_2 = new JLabel("\u6240\u6709\u56FE\u4E66\uFF1A");
-		label_2.setBounds(10, 63, 72, 15);
+		JLabel label_2 = new JLabel("\u8BE5\u8BFB\u8005\u6240\u501F\u56FE\u4E66\uFF1A");
+		label_2.setBounds(10, 63, 125, 15);
 		contentPane.add(label_2);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 212, 688, -129);
 		contentPane.add(scrollPane);
 		
-		JLabel label_3 = new JLabel("\u672C\u6B21\u501F\u9605\u56FE\u4E66\uFF1A");
+		JLabel label_3 = new JLabel("\u672C\u6B21\u7EED\u501F\u56FE\u4E66\uFF1A");
 		label_3.setBounds(10, 242, 96, 15);
 		contentPane.add(label_3);
 		
