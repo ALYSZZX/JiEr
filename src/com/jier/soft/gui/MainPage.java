@@ -3,9 +3,11 @@ package com.jier.soft.gui;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.Image;
 import java.awt.Insets;
 import java.awt.Toolkit;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -23,11 +25,14 @@ import java.awt.Font;
 
 import javax.swing.SwingConstants;
 
+import com.jier.soft.Util.panelWithBackground;
+
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.awt.SystemColor;
+import javax.swing.UIManager;
 
 public class MainPage extends JFrame {
 
@@ -53,18 +58,17 @@ public class MainPage extends JFrame {
 	 * Create the frame.
 	 */
 	public MainPage() {
+		setResizable(false);
 		setTitle("    JiEr \u56FE \u4E66 \u7BA1 \u7406 \u7CFB \u7EDF   ");
 		int x, y;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setResizable(false);
 		Insets screenInsets = Toolkit.getDefaultToolkit().getScreenInsets(
 				this.getGraphicsConfiguration());
 		y = screenInsets.bottom;
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		y = dim.height - y;
 		x = dim.width;
-		setBounds(0, 0, x, y);
-
+		this.setSize(x, y);
 		// SimpleDateFormat sm=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
 		contentPane = new JPanel();
@@ -102,29 +106,448 @@ public class MainPage extends JFrame {
 		panel.setLayout(null);
 
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setFont(new Font("��Բ", Font.PLAIN, 15));
-		tabbedPane.setBounds(10, 125, 1202, 481);
+		tabbedPane.setFont(new Font("幼圆", Font.PLAIN, 15));
+		tabbedPane.setBounds(10, 125, 1217, 481);
 		panel.add(tabbedPane);
-		
+
 		JPanel panel_2 = new JPanel();
 		panel_2.setBackground(Color.CYAN);
 		tabbedPane.addTab("\u67E5\u8BE2\u7EDF\u8BA1", null, panel_2, null);
 		panel_2.setLayout(null);
-		
+
+		JButton btnNewButton = new JButton(
+				"\u4E66\u520A\u4FE1\u606F\u67E5\u8BE2");
+		btnNewButton.setBounds(60, 20, 120, 25);
+		panel_2.add(btnNewButton);
+
+		JButton button_1 = new JButton("图书借阅查询");
+		button_1.setBounds(60, 60, 120, 25);
+		panel_2.add(button_1);
+
+		JButton button_2 = new JButton("借阅历史查询");
+		button_2.setBounds(60, 100, 120, 25);
+		panel_2.add(button_2);
+
+		JButton button_3 = new JButton("读者押金查询");
+		button_3.setBounds(60, 180, 120, 25);
+		panel_2.add(button_3);
+
+		JButton button_4 = new JButton("收款记录查询");
+		button_4.setBounds(60, 140, 120, 25);
+		panel_2.add(button_4);
+
+		JButton button_5 = new JButton("图书破损清单");
+		button_5.setBounds(60, 220, 120, 25);
+		panel_2.add(button_5);
+
+		JButton button_6 = new JButton("图书资料盘点");
+		button_6.setBounds(60, 340, 120, 25);
+		panel_2.add(button_6);
+
+		JButton button_7 = new JButton("借阅信息统计");
+		button_7.setBounds(60, 300, 120, 25);
+		panel_2.add(button_7);
+
+		JButton button_8 = new JButton("图书丢失清单");
+		button_8.setBounds(60, 260, 120, 25);
+		panel_2.add(button_8);
+
+		JLabel lblNewLabel_1 = new JLabel("有权限");
+		lblNewLabel_1.setBounds(245, 20, 55, 25);
+		panel_2.add(lblNewLabel_1);
+
+		JLabel label = new JLabel("有权限");
+		label.setBounds(245, 60, 55, 25);
+		panel_2.add(label);
+
+		JLabel label_1 = new JLabel("有权限");
+		label_1.setBounds(245, 100, 55, 25);
+		panel_2.add(label_1);
+
+		JLabel label_2 = new JLabel("有权限");
+		label_2.setBounds(245, 140, 55, 25);
+		panel_2.add(label_2);
+
+		JLabel label_3 = new JLabel("有权限");
+		label_3.setBounds(245, 180, 55, 25);
+		panel_2.add(label_3);
+
+		JLabel label_4 = new JLabel("有权限");
+		label_4.setBounds(245, 220, 55, 25);
+		panel_2.add(label_4);
+
+		JLabel label_5 = new JLabel("有权限");
+		label_5.setBounds(245, 260, 55, 25);
+		panel_2.add(label_5);
+
+		JLabel label_6 = new JLabel("有权限");
+		label_6.setBounds(245, 300, 55, 25);
+		panel_2.add(label_6);
+
+		JLabel label_7 = new JLabel("有权限");
+		label_7.setBounds(245, 340, 55, 25);
+		panel_2.add(label_7);
+
+		JLabel label_8 = new JLabel("按类别对图书数量、借出数等进行统计");
+		label_8.setBounds(381, 340, 226, 25);
+		panel_2.add(label_8);
+
+		JLabel label_9 = new JLabel("统计图书或读者借阅频率比较高的信息");
+		label_9.setBounds(381, 300, 226, 25);
+		panel_2.add(label_9);
+
+		JLabel label_10 = new JLabel("查询图书丢失记录");
+		label_10.setBounds(381, 260, 226, 25);
+		panel_2.add(label_10);
+
+		JLabel label_11 = new JLabel("查询图书破损记录");
+		label_11.setBounds(381, 220, 199, 25);
+		panel_2.add(label_11);
+
+		JLabel label_12 = new JLabel("查询有关读者押金信息");
+		label_12.setBounds(381, 180, 199, 25);
+		panel_2.add(label_12);
+
+		JLabel label_13 = new JLabel("查询因逾期、破损、丢失等收费记录");
+		label_13.setBounds(381, 140, 218, 25);
+		panel_2.add(label_13);
+
+		JLabel label_14 = new JLabel("查询读者的借阅历史信息");
+		label_14.setBounds(381, 100, 199, 25);
+		panel_2.add(label_14);
+
+		JLabel label_15 = new JLabel("查询借阅但没有归还的借阅记录");
+		label_15.setBounds(381, 60, 242, 25);
+		panel_2.add(label_15);
+
+		JLabel label_16 = new JLabel("查询图书借阅情况");
+		label_16.setBounds(381, 20, 258, 25);
+		panel_2.add(label_16);
+
 		JPanel panel_3 = new JPanel();
+		panel_3.setBackground(Color.CYAN);
 		tabbedPane.addTab("\u8BFB\u8005\u7BA1\u7406", null, panel_3, null);
-		
+		panel_3.setLayout(null);
+
+		JButton button_9 = new JButton("读者信息维护");
+		button_9.setBounds(60, 20, 120, 25);
+		panel_3.add(button_9);
+
+		JButton button_10 = new JButton("读者押金管理");
+		button_10.setBounds(60, 60, 120, 25);
+		panel_3.add(button_10);
+
+		JButton button_11 = new JButton("读者类型设置");
+		button_11.setBounds(60, 100, 120, 25);
+		panel_3.add(button_11);
+
+		JLabel label_17 = new JLabel("有权限");
+		label_17.setBounds(245, 100, 55, 25);
+		panel_3.add(label_17);
+
+		JLabel label_18 = new JLabel("有权限");
+		label_18.setBounds(245, 60, 55, 25);
+		panel_3.add(label_18);
+
+		JLabel label_19 = new JLabel("有权限");
+		label_19.setBounds(245, 20, 55, 25);
+		panel_3.add(label_19);
+
+		JLabel label_20 = new JLabel("管理所有的读者信息，包括录入，修改，删除等");
+		label_20.setBounds(381, 20, 258, 25);
+		panel_3.add(label_20);
+
+		JLabel label_21 = new JLabel("管理读者押金信息，对押金进行收取，退还，没收的操作");
+		label_21.setBounds(381, 60, 323, 25);
+		panel_3.add(label_21);
+
+		JLabel label_22 = new JLabel("设置读者类别，方便对读者信息进行管理");
+		label_22.setBounds(381, 100, 297, 25);
+		panel_3.add(label_22);
+
 		JPanel panel_4 = new JPanel();
+		panel_4.setBackground(Color.CYAN);
 		tabbedPane.addTab("\u501F\u9605\u7BA1\u7406", null, panel_4, null);
-		
+		panel_4.setLayout(null);
+
+		JLabel label_23 = new JLabel("有权限");
+		label_23.setBounds(245, 100, 55, 25);
+		panel_4.add(label_23);
+
+		JLabel label_24 = new JLabel("有权限");
+		label_24.setBounds(245, 60, 55, 25);
+		panel_4.add(label_24);
+
+		JLabel label_25 = new JLabel("有权限");
+		label_25.setBounds(245, 20, 55, 25);
+		panel_4.add(label_25);
+
+		JButton button_12 = new JButton("图书流通管理");
+		button_12.setBounds(60, 20, 120, 25);
+		panel_4.add(button_12);
+
+		JButton button_13 = new JButton("预期信息管理");
+		button_13.setBounds(60, 60, 120, 25);
+		panel_4.add(button_13);
+
+		JButton button_14 = new JButton("逾期借阅管理");
+		button_14.setBounds(60, 100, 120, 25);
+		panel_4.add(button_14);
+
+		JLabel label_26 = new JLabel("对到期没有归还的图书进行查询和管理");
+		label_26.setBounds(381, 100, 242, 25);
+		panel_4.add(label_26);
+
+		JLabel label_27 = new JLabel("对预借信息进行满足，删除等管理");
+		label_27.setBounds(381, 60, 242, 25);
+		panel_4.add(label_27);
+
+		JLabel label_28 = new JLabel("进行借书、还书、续借、破损、丢失等操作");
+		label_28.setBounds(381, 20, 258, 25);
+		panel_4.add(label_28);
+
+		JButton button_15 = new JButton("自动取书管理");
+		button_15.setBounds(60, 140, 120, 25);
+		panel_4.add(button_15);
+
+		JLabel label_29 = new JLabel("有权限");
+		label_29.setBounds(245, 140, 55, 25);
+		panel_4.add(label_29);
+
+		JLabel label_30 = new JLabel("进行批量借书、还书等操作");
+		label_30.setBounds(381, 140, 242, 25);
+		panel_4.add(label_30);
+
 		JPanel panel_5 = new JPanel();
+		panel_5.setBackground(Color.CYAN);
 		tabbedPane.addTab("\u4E66\u520A\u7BA1\u7406", null, panel_5, null);
-		
+		panel_5.setLayout(null);
+
+		JButton button_16 = new JButton("书刊信息维护");
+		button_16.setBounds(60, 20, 120, 25);
+		panel_5.add(button_16);
+
+		JButton button_17 = new JButton("出版单位设置");
+		button_17.setBounds(60, 60, 120, 25);
+		panel_5.add(button_17);
+
+		JButton button_18 = new JButton("书刊类别设置");
+		button_18.setBounds(60, 100, 120, 25);
+		panel_5.add(button_18);
+
+		JButton button_19 = new JButton("书刊条码打印");
+		button_19.setBounds(60, 140, 120, 25);
+		panel_5.add(button_19);
+
+		JLabel label_31 = new JLabel("有权限");
+		label_31.setBounds(245, 20, 55, 25);
+		panel_5.add(label_31);
+
+		JLabel label_32 = new JLabel("有权限");
+		label_32.setBounds(245, 60, 55, 25);
+		panel_5.add(label_32);
+
+		JLabel label_33 = new JLabel("有权限");
+		label_33.setBounds(245, 100, 55, 25);
+		panel_5.add(label_33);
+
+		JLabel label_34 = new JLabel("有权限");
+		label_34.setBounds(245, 140, 55, 25);
+		panel_5.add(label_34);
+
+		JLabel label_35 = new JLabel("打印自定义的书刊条码，方便管理");
+		label_35.setBounds(381, 140, 258, 25);
+		panel_5.add(label_35);
+
+		JLabel label_36 = new JLabel("设置书刊类别，系统默认使用《中国法》");
+		label_36.setBounds(381, 100, 242, 25);
+		panel_5.add(label_36);
+
+		JLabel label_37 = new JLabel("维护出版社等出版单位信息，方便录入及管理");
+		label_37.setBounds(381, 60, 242, 25);
+		panel_5.add(label_37);
+
+		JLabel label_38 = new JLabel("添加及管理所有的图书、期刊、杂志等信息 ");
+		label_38.setBounds(381, 20, 258, 25);
+		panel_5.add(label_38);
+
+		JButton button_20 = new JButton("书刊销售管理");
+		button_20.setBounds(60, 220, 120, 25);
+		panel_5.add(button_20);
+
+		JButton button_21 = new JButton("书刊库存管理");
+		button_21.setBounds(60, 180, 120, 25);
+		panel_5.add(button_21);
+
+		JLabel label_39 = new JLabel("有权限");
+		label_39.setBounds(245, 183, 55, 25);
+		panel_5.add(label_39);
+
+		JLabel label_40 = new JLabel("有权限");
+		label_40.setBounds(245, 223, 55, 25);
+		panel_5.add(label_40);
+
+		JLabel label_41 = new JLabel("书刊出入库变动明细查询");
+		label_41.setBounds(381, 183, 242, 25);
+		panel_5.add(label_41);
+
+		JLabel label_42 = new JLabel("图书对外销售管理");
+		label_42.setBounds(381, 223, 242, 25);
+		panel_5.add(label_42);
+
 		JPanel panel_6 = new JPanel();
-		tabbedPane.addTab("\u50A8\u84C4\u5361\u7BA1\u7406", null, panel_6, null);
-		
+		panel_6.setLayout(null);
+		panel_6.setBackground(Color.CYAN);
+		tabbedPane.addTab("储值卡管理", null, panel_6, null);
+
+		JLabel label_43 = new JLabel("有权限");
+		label_43.setBounds(245, 100, 55, 25);
+		panel_6.add(label_43);
+
+		JLabel label_44 = new JLabel("有权限");
+		label_44.setBounds(245, 60, 55, 25);
+		panel_6.add(label_44);
+
+		JLabel label_45 = new JLabel("有权限");
+		label_45.setBounds(245, 20, 55, 25);
+		panel_6.add(label_45);
+
+		JButton button_22 = new JButton("储值卡添加");
+		button_22.setBounds(60, 20, 120, 25);
+		panel_6.add(button_22);
+
+		JButton button_23 = new JButton("储值卡充值");
+		button_23.setBounds(60, 60, 120, 25);
+		panel_6.add(button_23);
+
+		JButton button_24 = new JButton("储值卡注销");
+		button_24.setBounds(60, 100, 120, 25);
+		panel_6.add(button_24);
+
+		JLabel label_46 = new JLabel("注销读者储值卡（退卡）");
+		label_46.setBounds(381, 100, 242, 25);
+		panel_6.add(label_46);
+
+		JLabel label_47 = new JLabel("修改读者储值卡余额信息");
+		label_47.setBounds(381, 60, 242, 25);
+		panel_6.add(label_47);
+
+		JLabel label_48 = new JLabel("为读者分配储值卡");
+		label_48.setBounds(381, 20, 258, 25);
+		panel_6.add(label_48);
+
+		JButton button_25 = new JButton("储值卡管理");
+		button_25.setBounds(60, 140, 120, 25);
+		panel_6.add(button_25);
+
+		JLabel label_49 = new JLabel("有权限");
+		label_49.setBounds(245, 140, 55, 25);
+		panel_6.add(label_49);
+
+		JLabel label_50 = new JLabel("查看读者储值卡信息，批量修改、删除、添加储值卡等");
+		label_50.setBounds(381, 140, 242, 25);
+		panel_6.add(label_50);
+
 		JPanel panel_7 = new JPanel();
-		tabbedPane.addTab("\u7CFB\u7EDF\u7EF4\u62A4", null, panel_7, null);
+		panel_7.setLayout(null);
+		panel_7.setBackground(Color.CYAN);
+		tabbedPane.addTab("系统维护", null, panel_7, null);
+
+		JButton button_26 = new JButton("修改密码");
+		button_26.setBounds(60, 20, 120, 25);
+		panel_7.add(button_26);
+
+		JButton button_27 = new JButton("系统初始化");
+		button_27.setBounds(60, 60, 120, 25);
+		panel_7.add(button_27);
+
+		JButton button_28 = new JButton("操作员管理");
+		button_28.setBounds(60, 100, 120, 25);
+		panel_7.add(button_28);
+
+		JButton button_29 = new JButton("数据库备份恢复");
+		button_29.setBounds(60, 180, 120, 25);
+		panel_7.add(button_29);
+
+		JButton button_30 = new JButton("操作日志管理");
+		button_30.setBounds(60, 140, 120, 25);
+		panel_7.add(button_30);
+
+		JButton button_31 = new JButton("系统参数设置");
+		button_31.setBounds(60, 220, 120, 25);
+		panel_7.add(button_31);
+
+		JButton button_33 = new JButton("图书馆信息设置");
+		button_33.setBounds(60, 300, 120, 25);
+		panel_7.add(button_33);
+
+		JButton button_34 = new JButton("收费模式设置");
+		button_34.setBounds(60, 260, 120, 25);
+		panel_7.add(button_34);
+
+		JLabel label_51 = new JLabel("有权限");
+		label_51.setBounds(245, 20, 55, 25);
+		panel_7.add(label_51);
+
+		JLabel label_52 = new JLabel("有权限");
+		label_52.setBounds(245, 60, 55, 25);
+		panel_7.add(label_52);
+
+		JLabel label_53 = new JLabel("有权限");
+		label_53.setBounds(245, 100, 55, 25);
+		panel_7.add(label_53);
+
+		JLabel label_54 = new JLabel("有权限");
+		label_54.setBounds(245, 140, 55, 25);
+		panel_7.add(label_54);
+
+		JLabel label_55 = new JLabel("有权限");
+		label_55.setBounds(245, 180, 55, 25);
+		panel_7.add(label_55);
+
+		JLabel label_56 = new JLabel("有权限");
+		label_56.setBounds(245, 220, 55, 25);
+		panel_7.add(label_56);
+
+		JLabel label_57 = new JLabel("有权限");
+		label_57.setBounds(245, 260, 55, 25);
+		panel_7.add(label_57);
+
+		JLabel label_58 = new JLabel("有权限");
+		label_58.setBounds(245, 300, 55, 25);
+		panel_7.add(label_58);
+
+		JLabel label_61 = new JLabel("设置图书馆的基本信息");
+		label_61.setBounds(381, 300, 226, 25);
+		panel_7.add(label_61);
+
+		JLabel label_62 = new JLabel("设置收费模式");
+		label_62.setBounds(381, 260, 226, 25);
+		panel_7.add(label_62);
+
+		JLabel label_63 = new JLabel("维护单位、部门、书室、架位等基本字典信息");
+		label_63.setBounds(381, 220, 199, 25);
+		panel_7.add(label_63);
+
+		JLabel label_64 = new JLabel("对数据库进行备份和恢复");
+		label_64.setBounds(381, 180, 199, 25);
+		panel_7.add(label_64);
+
+		JLabel label_65 = new JLabel("查看软件操作日志");
+		label_65.setBounds(381, 140, 218, 25);
+		panel_7.add(label_65);
+
+		JLabel label_66 = new JLabel("对操作员的信息及权限进行管理");
+		label_66.setBounds(381, 100, 199, 25);
+		panel_7.add(label_66);
+
+		JLabel label_67 = new JLabel("首次使用时对数据库初始化");
+		label_67.setBounds(381, 60, 242, 25);
+		panel_7.add(label_67);
+
+		JLabel label_68 = new JLabel("修改当前操作员密码");
+		label_68.setBounds(381, 20, 258, 25);
+		panel_7.add(label_68);
 
 		JButton lendBook = new JButton("\u501F\u9605\u56FE\u4E66");
 		lendBook.setBounds(27, 35, 93, 23);
@@ -143,7 +566,7 @@ public class MainPage extends JFrame {
 		panel.add(quiryLending);
 
 		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(0, 665, 1350, 34);
+		panel_1.setBounds(0, 665, 1360, 34);
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 
@@ -159,15 +582,42 @@ public class MainPage extends JFrame {
 		JLabel systemTime = new JLabel("\u7CFB\u7EDF\u65F6\u95F4\uFF1A");
 		systemTime.setBounds(1135, 10, 212, 15);
 		panel_1.add(systemTime);
-		
-		JPanel panel_8 = new JPanel();
+
+		Image image = new ImageIcon("source/1.png").getImage();
+		// JPanel panel = new BackgroundPanel(image);  
+		// JPanel panel_8 = new JPanel();
+		JPanel panel_8 = new panelWithBackground(image);
 		panel_8.setBackground(new Color(255, 0, 255));
-		panel_8.setBounds(0, 0, 1360, 58);
+		panel_8.setBounds(0, 0, 1376, 58);
 		contentPane.add(panel_8);
 		panel_8.setLayout(null);
-		
-		JButton button = new JButton("    JiEr \u56FE \u4E66 \u7BA1 \u7406 \u7CFB \u7EDF   ");
-		button.setBounds(397, 10, 312, 39);
+
+		JButton button = new JButton(
+				"    JiEr \u56FE \u4E66 \u7BA1 \u7406 \u7CFB \u7EDF   ");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if (JOptionPane.showConfirmDialog(null, "正在打开JiEr官网，是否继续？",
+						"提醒", JOptionPane.YES_NO_OPTION) == 0)
+					if (java.awt.Desktop.isDesktopSupported()) {
+						try {
+							// 创建一个URI实例
+							java.net.URI uri = java.net.URI
+									.create("https://msdn.microsoft.com/");
+							// 获取当前系统桌面扩展
+							java.awt.Desktop dp = java.awt.Desktop.getDesktop();
+							// 判断系统桌面是否支持要执行的功能
+							if (dp.isSupported(java.awt.Desktop.Action.BROWSE)) {
+								// 获取系统默认浏览器打开链接
+								dp.browse(uri);
+							}
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+			}
+		});
+		button.setBackground(UIManager.getColor("CheckBox.light"));
+		button.setBounds(550, 10, 300, 39);
 		panel_8.add(button);
 	}
 }
