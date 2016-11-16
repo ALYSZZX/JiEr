@@ -14,7 +14,7 @@ public class Reader {
 	//已借书籍书
 	private int reader_book_conut;
 	//总借书次数
-	private int reader_coun;
+	private int reader_count;
 	
 	private String reader_phone;
 	private String reader_email;
@@ -56,11 +56,11 @@ public class Reader {
 	public void setReader_book_conut(int reader_book_conut) {
 		this.reader_book_conut = reader_book_conut;
 	}
-	public int getReader_coun() {
-		return reader_coun;
+	public int getReader_count() {
+		return reader_count;
 	}
-	public void setReader_coun(int reader_coun) {
-		this.reader_coun = reader_coun;
+	public void setReader_count(int reader_coun) {
+		this.reader_count = reader_coun;
 	}
 	public String getReader_phone() {
 		return reader_phone;
