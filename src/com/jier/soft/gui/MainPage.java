@@ -97,7 +97,7 @@ public class MainPage extends JFrame {
 		JPanel panel = new JPanel();
 		panel.setBackground(SystemColor.textHighlight);
 		panel.setForeground(Color.CYAN);
-		panel.setBounds(123, 59, 1227, 606);
+		panel.setBounds(123, 59, 1237, 606);
 		contentPane.add(panel);
 		panel.setLayout(null);
 
