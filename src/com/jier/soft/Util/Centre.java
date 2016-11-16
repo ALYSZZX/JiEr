@@ -7,6 +7,7 @@ import java.awt.Toolkit;
 import javax.swing.JFrame;
 
 public class Centre {
+	//x，y为窗口大小
 	public static void Centre(JFrame j,int x,int y) {
 		// 获取工具对象
 		Toolkit tool = Toolkit.getDefaultToolkit();
