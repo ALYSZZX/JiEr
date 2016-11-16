@@ -10,9 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import com.jier.soft.Util.Centre;
-
-public class CaiGouJH extends JFrame {
+public class MainPage extends JFrame {
 
 	private JPanel contentPane;
 
@@ -23,7 +21,7 @@ public class CaiGouJH extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					CaiGouJH frame = new CaiGouJH();
+					MainPage frame = new MainPage();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -35,17 +33,16 @@ public class CaiGouJH extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	
-	
-	public CaiGouJH() {
-		setTitle("\u91C7\u8D2D\u8FDB\u8D27");
-	//	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	public MainPage() {
 		int x,y;
-		//采购进货窗口大小
-		x=830;
-		y=520;
-		setSize(x, y);
-		Centre.Centre(this,x,y);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		Insets screenInsets=Toolkit.getDefaultToolkit().getScreenInsets(this.getGraphicsConfiguration()); 
+		y=screenInsets.bottom;
+		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+		y=dim.height-y;
+		x=dim.width;
+		
+		setBounds(0, 0, x, y);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
