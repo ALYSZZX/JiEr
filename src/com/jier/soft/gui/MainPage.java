@@ -33,8 +33,11 @@ import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.awt.SystemColor;
 import javax.swing.UIManager;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
-public class MainPage extends JFrame {
+public class MainPage extends JFrame implements ActionListener {
 
 	private JPanel contentPane;
 
@@ -58,7 +61,7 @@ public class MainPage extends JFrame {
 	 * Create the frame.
 	 */
 	public MainPage() {
-		setResizable(false);
+	//	setResizable(false);
 		setTitle("    JiEr \u56FE \u4E66 \u7BA1 \u7406 \u7CFB \u7EDF   ");
 		int x, y;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -68,7 +71,8 @@ public class MainPage extends JFrame {
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		y = dim.height - y;
 		x = dim.width;
-		this.setSize(1366, 728);
+		this.setSize(x, y);
+		//this.setSize(1366, 728);
 		// SimpleDateFormat sm=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
 		contentPane = new JPanel();
@@ -108,12 +112,10 @@ public class MainPage extends JFrame {
 		panel.setForeground(Color.CYAN);
 		panel.setBounds(123, 59, 1237, 606);
 		contentPane.add(panel);
-		panel.setLayout(null);
 
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane.setBounds(0, 127, 1237, 479);
 		tabbedPane.setFont(new Font("幼圆", Font.PLAIN, 15));
-		tabbedPane.setBounds(10, 125, 1217, 481);
-		panel.add(tabbedPane);
 
 		JPanel panel_2 = new JPanel();
 		panel_2.setBackground(Color.CYAN);
@@ -326,10 +328,12 @@ public class MainPage extends JFrame {
 		label_25.setBounds(245, 20, 55, 25);
 		panel_4.add(label_25);
 
-		JButton button_12 = new JButton("图书流通管理");
-		button_12.setFont(new Font("SimSun", Font.PLAIN, 12));
-		button_12.setBounds(60, 20, 120, 25);
-		panel_4.add(button_12);
+		JButton TuShuLiuTong = new JButton("图书流通管理");
+		TuShuLiuTong.addActionListener(this);
+		TuShuLiuTong.setActionCommand("tushuliutong");
+		TuShuLiuTong.setFont(new Font("SimSun", Font.PLAIN, 12));
+		TuShuLiuTong.setBounds(60, 20, 120, 25);
+		panel_4.add(TuShuLiuTong);
 
 		JButton button_13 = new JButton("预期信息管理");
 		button_13.setFont(new Font("SimSun", Font.PLAIN, 12));
@@ -658,24 +662,26 @@ public class MainPage extends JFrame {
 		panel_7.add(label_68);
 
 		JButton lendBook = new JButton("\u501F\u9605\u56FE\u4E66");
-		lendBook.setFont(new Font("SimSun", Font.PLAIN, 12));
 		lendBook.setBounds(27, 35, 93, 23);
-		panel.add(lendBook);
+		lendBook.setFont(new Font("SimSun", Font.PLAIN, 12));
 
 		JButton returnBook = new JButton("\u5F52\u8FD8\u56FE\u4E66");
-		returnBook.setFont(new Font("SimSun", Font.PLAIN, 12));
 		returnBook.setBounds(171, 35, 93, 23);
-		panel.add(returnBook);
+		returnBook.setFont(new Font("SimSun", Font.PLAIN, 12));
 
 		JButton renewBook = new JButton("\u7EED\u501F\u56FE\u4E66");
-		renewBook.setFont(new Font("SimSun", Font.PLAIN, 12));
 		renewBook.setBounds(318, 35, 93, 23);
-		panel.add(renewBook);
+		renewBook.setFont(new Font("SimSun", Font.PLAIN, 12));
 
 		JButton quiryLending = new JButton("\u501F\u9605\u67E5\u8BE2");
-		quiryLending.setFont(new Font("SimSun", Font.PLAIN, 12));
 		quiryLending.setBounds(478, 35, 93, 23);
+		quiryLending.setFont(new Font("SimSun", Font.PLAIN, 12));
+		panel.setLayout(null);
+		panel.add(lendBook);
+		panel.add(returnBook);
+		panel.add(renewBook);
 		panel.add(quiryLending);
+		panel.add(tabbedPane);
 
 		JPanel panel_1 = new JPanel();
 		panel_1.setBounds(0, 665, 1360, 34);
@@ -732,5 +738,15 @@ public class MainPage extends JFrame {
 		panel_8.setLayout(null);
 		button.setBackground(UIManager.getColor("CheckBox.light"));
 		panel_8.add(button);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		if("tushuliutong".equals(e.getActionCommand()))
+		{
+			bookCirculation tushuliutong = new bookCirculation();
+			tushuliutong.setVisible(true);;	
+		}
 	}
 }
