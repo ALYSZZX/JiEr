@@ -16,6 +16,8 @@ import java.awt.Color;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
 
+import com.jier.soft.Action.BookInfoAction;
+
 public class lendbook extends JFrame {
 
 	private JPanel contentPane;
@@ -92,10 +94,12 @@ public class lendbook extends JFrame {
 		
 
 		String[] title = {"图书名称","作者","出版社","图书类别","图书数量","借出数量","借用次数","单价"};
-		String[][] content = {}; 
 		
-		DefaultTableModel dt = new DefaultTableModel(content,title);
-		table = new JTable();
+		DefaultTableModel dt = new DefaultTableModel(null,title);
+		table = new JTable(dt);
+		
+		BookInfoAction action = new BookInfoAction();
+		action.loadBookInfo(dt);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 212, 688, -129);
@@ -110,7 +114,7 @@ public class lendbook extends JFrame {
 		String[] title1 = {"图书编号","图书名称","出版社","借出日期","操作员"};
 		String[][] content1 = {}; 
 		
-		DefaultTableModel dt1 = new DefaultTableModel(content,title);
+		DefaultTableModel dt1 = new DefaultTableModel(null,title);
 		table = new JTable();
 		
 		JScrollPane scrollPane_1 = new JScrollPane();

@@ -21,7 +21,7 @@ public class BookInfoAction {
 		
 		for(int i =0; i < list.size(); i++){
 			BookInfo book = list.get(i);
-			Object[] obj ={book.getBook_id(), book.getBook_name(), book.getBook_author() };//具体加载的行
+			Object[] obj ={book.getBook_name(), book.getBook_author(),book.getBook_publish(),book.getBook_type(),book.getBook_count(),book.getBook_lend(),book.getBook_lend_count(),book.getBook_price() };//具体加载的行
 			dt.addRow(obj);
 		}
 		
