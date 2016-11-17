@@ -3,6 +3,7 @@ package com.jier.soft.gui;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
@@ -74,7 +75,7 @@ public class MainPage extends JFrame implements ActionListener {
 		} 
 		});
 		
-		contentPane = new JPanel();
+		contentPane = new Back1Panel();
 		contentPane.setBackground(Color.BLUE);
 		contentPane.setForeground(Color.BLUE);
 		setUndecorated(true);
@@ -84,16 +85,22 @@ public class MainPage extends JFrame implements ActionListener {
 		JButton shiftWork = new JButton("\u6362\u73ED\u767B\u5F55");
 		shiftWork.setFont(new Font("微软雅黑", Font.BOLD, 16));
 		shiftWork.setBounds(29, 89, 100, 51);
+		shiftWork.addActionListener(this);
+		shiftWork.setActionCommand("shiftWork");
 		contentPane.add(shiftWork);
 
 		JButton systemHelp = new JButton("\u7CFB\u7EDF\u5E2E\u52A9");
 		systemHelp.setFont(new Font("微软雅黑", Font.BOLD, 16));
 		systemHelp.setBounds(29, 180, 100, 51);
+		systemHelp.addActionListener(this);
+		systemHelp.setActionCommand("systemHelp");
 		contentPane.add(systemHelp);
 
 		JButton aboutSoft = new JButton("\u5173\u4E8E\u8F6F\u4EF6");
 		aboutSoft.setFont(new Font("微软雅黑", Font.BOLD, 16));
 		aboutSoft.setBounds(29, 266, 100, 51);
+		aboutSoft.addActionListener(this);
+		aboutSoft.setActionCommand("aboutSoft");
 		contentPane.add(aboutSoft);
 
 		JButton exitSystem = new JButton("\u9000\u51FA\u7CFB\u7EDF");
@@ -106,9 +113,11 @@ public class MainPage extends JFrame implements ActionListener {
 		JButton payForIt = new JButton("\u8F6F\u4EF6\u8D2D\u4E70");
 		payForIt.setFont(new Font("微软雅黑", Font.BOLD, 16));
 		payForIt.setBounds(29, 444, 100, 51);
+		payForIt.addActionListener(this);
+		payForIt.setActionCommand("payForIt");
 		contentPane.add(payForIt);
 
-		JPanel panel = new JPanel();
+		JPanel panel = new BackPanel();
 		panel.setBackground(SystemColor.textHighlight);
 		panel.setForeground(Color.CYAN);
 		panel.setBounds(167, 59, 1199, 627);
@@ -118,7 +127,7 @@ public class MainPage extends JFrame implements ActionListener {
 		tabbedPane.setBounds(0, 175, 1242, 452);
 		tabbedPane.setFont(new Font("幼圆", Font.PLAIN, 15));
 
-		JPanel panel_2 = new JPanel();
+		JPanel panel_2 = new BackPanel();
 		panel_2.setBackground(Color.CYAN);
 		tabbedPane.addTab("\u67E5\u8BE2\u7EDF\u8BA1", null, panel_2, null);
 		tabbedPane.setBackgroundAt(0, Color.WHITE);
@@ -260,7 +269,7 @@ public class MainPage extends JFrame implements ActionListener {
 		label_16.setBounds(381, 20, 258, 25);
 		panel_2.add(label_16);
 
-		JPanel panel_3 = new JPanel();
+		JPanel panel_3 = new BackPanel();
 		panel_3.setBackground(Color.CYAN);
 		tabbedPane.addTab("\u8BFB\u8005\u7BA1\u7406", null, panel_3, null);
 		panel_3.setLayout(null);
@@ -310,7 +319,7 @@ public class MainPage extends JFrame implements ActionListener {
 		label_22.setBounds(381, 100, 297, 25);
 		panel_3.add(label_22);
 
-		JPanel panel_4 = new JPanel();
+		JPanel panel_4 = new BackPanel();
 		panel_4.setBackground(Color.CYAN);
 		tabbedPane.addTab("\u501F\u9605\u7BA1\u7406", null, panel_4, null);
 		panel_4.setLayout(null);
@@ -377,7 +386,7 @@ public class MainPage extends JFrame implements ActionListener {
 		label_30.setBounds(381, 140, 242, 25);
 		panel_4.add(label_30);
 
-		JPanel panel_5 = new JPanel();
+		JPanel panel_5 = new BackPanel();
 		panel_5.setBackground(Color.CYAN);
 		tabbedPane.addTab("\u4E66\u520A\u7BA1\u7406", null, panel_5, null);
 		panel_5.setLayout(null);
@@ -474,7 +483,7 @@ public class MainPage extends JFrame implements ActionListener {
 		label_42.setBounds(381, 223, 242, 25);
 		panel_5.add(label_42);
 
-		JPanel panel_6 = new JPanel();
+		JPanel panel_6 = new BackPanel();
 		panel_6.setLayout(null);
 		panel_6.setBackground(Color.CYAN);
 		tabbedPane.addTab("储值卡管理", null, panel_6, null);
@@ -539,7 +548,7 @@ public class MainPage extends JFrame implements ActionListener {
 		label_50.setBounds(381, 140, 242, 25);
 		panel_6.add(label_50);
 
-		JPanel panel_7 = new JPanel();
+		JPanel panel_7 = new BackPanel();
 		panel_7.setLayout(null);
 		panel_7.setBackground(Color.CYAN);
 		tabbedPane.addTab("系统维护", null, panel_7, null);
@@ -687,7 +696,7 @@ public class MainPage extends JFrame implements ActionListener {
 		panel.add(quiryLending);
 		panel.add(tabbedPane);
 
-		JPanel panel_1 = new JPanel();
+		JPanel panel_1 = new Back1Panel();
 		panel_1.setBounds(0, 685, 1376, 40);
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
@@ -769,9 +778,62 @@ public class MainPage extends JFrame implements ActionListener {
 		}
 		if("bookmaintenance".equals(e.getActionCommand()))
 		{
-			
 			bookMaintenance bookMaintenance=new bookMaintenance();	
 			bookMaintenance.setVisible(true);
 		}
+		if("shiftwork".equals(e.getActionCommand())){
+			LoginFrame login = new LoginFrame();
+			login.setVisible(true);
+			this.dispose();
+		}
+		if("aboutSoft".equals(e.getActionCommand())){
+			AboutSoft soft = new AboutSoft();
+			soft.setVisible(true);
+		}
+		if("systemHelp".equals(e.getActionCommand())){
+			SystemBay bay = new SystemBay();
+			bay.setVisible(true);
+			
+		}
+		if("shiftWork".equals(e.getActionCommand())){
+			LoginFrame login = new LoginFrame();
+			login.setVisible(true);
+			this.dispose();
+		}
+		if("payForIt".equals(e.getActionCommand())){
+			//系统购买
+			SystemHelp help = new SystemHelp();
+			help.setVisible(true);
+		}
+	}
+}
+class BackPanel extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1360702537568655925L;
+	public BackPanel() {
+
+	}
+	public void paintComponent(Graphics g) {
+		int x = 0, y = 0;
+		ImageIcon icon = new ImageIcon("image/mainback2.png");
+		g.drawImage(icon.getImage(), x, y, getSize().width,
+				getSize().height, this);
+	}
+}
+class Back1Panel extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1360702537568655925L;
+	public Back1Panel() {
+
+	}
+	public void paintComponent(Graphics g) {
+		int x = 0, y = 0;
+		ImageIcon icon = new ImageIcon("image/mainback.png");
+		g.drawImage(icon.getImage(), x, y, getSize().width,
+				getSize().height, this);
 	}
 }

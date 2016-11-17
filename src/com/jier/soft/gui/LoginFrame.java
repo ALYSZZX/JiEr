@@ -140,8 +140,8 @@ class NewPanel extends JPanel {
 	}
 	public void paintComponent(Graphics g) {
 		int x = 0, y = 0;
-		ImageIcon icon = new ImageIcon("image/backgroud.png");// 003.jpg閺勵垱绁寸拠鏇炴禈閻楀洤婀い鍦窗閻ㄥ嫭鐗撮惄顔肩秿娑擄拷
+		ImageIcon icon = new ImageIcon("image/backgroud.png");
 		g.drawImage(icon.getImage(), x, y, getSize().width,
-				getSize().height, this);// 閸ュ墽澧栨导姘冲殰閸斻劎缂夐弨锟�//	    g.drawImage(icon.getImage(), x, y,this);//閸ュ墽澧栨稉宥勭窗閼奉亜濮╃紓鈺傛杹
+				getSize().height, this);
 	}
 }
