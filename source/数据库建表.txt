@@ -1,79 +1,48 @@
-供货商
-create table supplier(
-id int not null auto_increment,
-name varchar(30) not null,
-contacts varchar(30),
-phone varchar(15),
-address varchar(50),
-remark varchar(200),
-pay double,
-defaults int,
-disable int default 0,
-primary key(id)
-)charset=utf8;	
+图书信息
+create table bookinfo(
+book_id int(8) zerofill not null auto_increment,
+book_name varchar(50) not null, 
+book_author varchar(20),
+book_publish varchar(50),
+book_type varchar(30),
+book_count int,
+book_remain int,
+book_lend int,
+book_lend_time int,
+book_lend_count int,
+ISBN varchar(30),
+book_pubtimes int,
+book_price double,
+book_status int,
+dr int default 1,
+primary key(book_id)
+)charset=utf8;
 
+读者表
+create table reader(
+reader_id int(8) zerofill not null auto_increment,
+reader_number int not null,
+reader_name varchar(10) not null,
+reader_money double default 0.0,
+reader_type varchar(10),
+reader_book_count int default 0,
+reader_count int default 0,
+reader_phone varchar(12),
+reader_email varchar(50),
+reader_status int default 1,
+dr int default 1,
+primary key(reader_id)
+)charset=utf8;
 
-商品类型
-create table category(
-id int not null auto_increment,
-category_number int not null,
-catagory_name varchar(20),
-primary key(id)
-)charset=utf8;	
-
-
-单位
-create table unit(
-id int not null auto_increment,
-unit_name varchar(5),
-primary key(id)
-)charset=utf8;	
-
-insert into unit
-(unit_name)
-values
-("瓶"),
-("箱"),
-("袋"),
-("盒"),
-("张");
-
-颜色
-create table color(
-id int not null auto_increment,
-color_name varchar(5),
-primary key(id)
-)charset=utf8;	
-
-insert into color
-(color_name)
-values
-("白"),
-("绿"),
-("澄"),
-("红"),
-("透明");
-
-商品表
-create table goods(
-goods_id int not null auto_increment,
-goods_number int not null,
-goods_name varchar(30) not null,
-goods_category int,
-goods_unit int,	
-goods_spec varchar(20),
-goods_color int,
-goods_life int,
-goods_status int,
-goods_discount double,
-goods_store int default 0,
-goods_purchase double,
-goods_sell double,
-goods_integral double,
-goods_production varchar(30),
-goods_remark varchar(50),
-primary key(goods_id),
-constraint FK_goods_category foreign key(goods_category) references category(id),
-constraint FK_goods_unit foreign key(goods_unit) references unit(id),
-constraint FK_goods_color foreign key(goods_color) references color(id)  
-)charset=utf8;	
+借书表
+create table booklend(
+lend_id int(8) zerofill not null auto_increment,
+reader_id int(8) zerofill  not null,
+book_id int(8) zerofill  not null,
+lend_book_counts int default 1,
+lend_time date,
+dr int default 1,
+constraint FK_reader_id foreign key(reader_id) references reader(reader_id),
+constraint FK_book_id foreign key(book_id) references bookinfo(book_id),
+primary key(lend_id) 
+)charset=utf8;
