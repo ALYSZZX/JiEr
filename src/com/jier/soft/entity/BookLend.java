@@ -6,7 +6,6 @@ public class BookLend {
 
 	
 	//借书信息表
-	
 	private int lend_id;
 	//读者主键
 	private int reader_id;
@@ -16,6 +15,7 @@ public class BookLend {
 	private int lend_book_count;
 	//借书时间
 	private Date lend_time;
+	
 	public int getLend_id() {
 		return lend_id;
 	}
