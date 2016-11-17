@@ -1,47 +1,32 @@
 package com.jier.soft.gui;
 
-import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.Image;
 import java.awt.Insets;
+import java.awt.SystemColor;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
 import javax.swing.InputMap;
+import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRootPane;
-import javax.swing.KeyStroke;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JButton;
 import javax.swing.JTabbedPane;
-
-import java.awt.FlowLayout;
-import java.text.SimpleDateFormat;
-
-import javax.swing.JTextField;
-import javax.swing.JLabel;
-
-import java.awt.Font;
-
+import javax.swing.KeyStroke;
 import javax.swing.SwingConstants;
+import javax.swing.UIManager;
 
 import com.jier.soft.Util.panelWithBackground;
-
-import java.awt.Color;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.io.IOException;
-import java.awt.SystemColor;
-
-import javax.swing.UIManager;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class MainPage extends JFrame implements ActionListener {
 
@@ -93,23 +78,6 @@ public class MainPage extends JFrame implements ActionListener {
 		System.exit(0);
 		} 
 		});
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.BLUE);
