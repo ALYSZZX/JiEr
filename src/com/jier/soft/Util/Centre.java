@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 
 public class Centre {
 	//x，y为窗口大小
-	public static void Centre(JFrame j,int x,int y) {
+	public static void centre(JFrame j,int x,int y) {
 		j.setSize(x, y);
 		// 获取工具对象
 		Toolkit tool = Toolkit.getDefaultToolkit();

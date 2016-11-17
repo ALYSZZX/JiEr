@@ -1,20 +1,22 @@
 package com.jier.soft.gui;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import com.jier.soft.Util.Centre;
 
-import javax.swing.JButton;
-
 public class bookCirculation extends JFrame implements ActionListener {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1822525808789131095L;
 	private JPanel contentPane;
 
 	/**
@@ -41,7 +43,7 @@ public class bookCirculation extends JFrame implements ActionListener {
 		int x,y;
 		x=465;
 		y=100;
-		Centre.Centre(this, x, y);
+		Centre.centre(this, x, y);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);

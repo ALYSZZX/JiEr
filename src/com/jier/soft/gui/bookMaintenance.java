@@ -21,6 +21,10 @@ import com.jier.soft.Util.Centre;
 
 public class bookMaintenance extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5525047071968833741L;
 	private JPanel contentPane;
 	private JTextField textField;
 	DefaultTableModel dt;
@@ -44,12 +48,11 @@ public class bookMaintenance extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	@SuppressWarnings("null")
 	public bookMaintenance() {
 		setTitle("\u4E66\u520A\u4FE1\u606F\u7EF4\u62A4");
 	    this.setResizable(false);
 	    this.setSize(800, 600);
-		Centre.Centre(this, 800, 600);
+		Centre.centre(this, 800, 600);
 	    contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -84,7 +87,7 @@ public class bookMaintenance extends JFrame {
 		lblNewLabel.setBounds(43, 10, 95, 20);
 		panel_1.add(lblNewLabel);
 		
-		JComboBox<String> comboBox = new JComboBox();
+		JComboBox<String> comboBox = new JComboBox<String>();
 		comboBox.setBounds(132, 10, 144, 20);
 		comboBox.addItem("任意方式");
 		comboBox.addItem("书刊编号");

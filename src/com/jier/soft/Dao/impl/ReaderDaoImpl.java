@@ -58,7 +58,7 @@ public class ReaderDaoImpl implements ReaderDao{
 		
 		try{
 			conn= DBUtil.getConnection();
-			String sql = "select * from reader";
+			String sql = "select * from reader where dr='1'";
 			stat = conn.createStatement();
 			rs = stat.executeQuery(sql);
 			while(rs.next()){
@@ -73,7 +73,6 @@ public class ReaderDaoImpl implements ReaderDao{
 				reader.setReader_phone(rs.getString("reader_phone"));
 				reader.setReader_email(rs.getString("reader_email"));
 				reader.setReader_status(rs.getInt("reader_status"));
-				
 				list.add(reader);
 			}
 			
@@ -92,9 +91,26 @@ public class ReaderDaoImpl implements ReaderDao{
 	}
 
 	@Override
-	public boolean deleteReader(Reader[] reader) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean deleteReader(Reader[] readers) {
+		Connection conn = null;
+		Statement stat = null;
+		boolean flagg = true;
+		try{
+			conn= DBUtil.getConnection();
+			stat=conn.createStatement();
+			for(Reader reader :readers){
+				String sql = "update bookinfo set dr=0 where book_id='"+reader.getReader_id()+"'";
+				int flag = stat.executeUpdate(sql);
+				if(flag<=0)
+					flagg = false;
+			}
+		}catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			DBUtil.close(conn, stat, null);
+		}
+		return flagg;
 	}
 
 }

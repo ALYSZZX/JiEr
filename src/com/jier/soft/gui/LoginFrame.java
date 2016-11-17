@@ -1,27 +1,30 @@
 package com.jier.soft.gui;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JTextField;
 import javax.swing.JPasswordField;
-import javax.swing.JButton;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
 
 import com.jier.soft.Action.LoginAction;
 import com.jier.soft.Util.Centre;
 
-import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 public class LoginFrame extends JFrame implements ActionListener{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6205603974708222941L;
 	private JPanel contentPane;
 	private JTextField userField;
 	private JPasswordField passwordField;
@@ -33,7 +36,7 @@ public class LoginFrame extends JFrame implements ActionListener{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		//setBounds(500, 250, 861, 542);
-		Centre.Centre(this, 861, 542);
+		Centre.centre(this, 861, 542);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -128,6 +131,10 @@ public class LoginFrame extends JFrame implements ActionListener{
 	}
 }
 class NewPanel extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1360702537568655925L;
 	public NewPanel() {
 
 	}

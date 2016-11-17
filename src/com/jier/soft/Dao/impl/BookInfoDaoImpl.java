@@ -23,7 +23,7 @@ public class BookInfoDaoImpl implements BookInfoDao{
 		
 		try{
 			conn= DBUtil.getConnection();
-			String sql = "select * from bookinfo";
+			String sql = "select * from bookinfo where dr ='1'";
 			stat = conn.createStatement();
 			rs = stat.executeQuery(sql);
 			while(rs.next()){
