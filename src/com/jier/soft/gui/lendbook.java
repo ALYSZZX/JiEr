@@ -23,10 +23,11 @@ public class lendbook extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
-	private JTextField textField_1;
 	private JTable table;
 	private JTable table_2;
 	private JTable table_1;
+	private JTextField textField_1;
+	private JTextField textField_2;
 
 	/**
 	 * Launch the application.
@@ -63,20 +64,10 @@ public class lendbook extends JFrame {
 		label.setFont(new Font("宋体", Font.PLAIN, 16));
 		contentPane.add(label);
 		
-		JLabel label_1 = new JLabel("\u4E66\u520A\u7F16\u53F7 :");
-		label_1.setBounds(10, 59, 87, 41);
-		label_1.setFont(new Font("宋体", Font.PLAIN, 16));
-		contentPane.add(label_1);
-		
 		textField = new JTextField();
 		textField.setBounds(95, 8, 135, 40);
 		contentPane.add(textField);
 		textField.setColumns(10);
-		
-		textField_1 = new JTextField();
-		textField_1.setBounds(95, 64, 135, 36);
-		textField_1.setColumns(10);
-		contentPane.add(textField_1);
 		
 		JLabel label_2 = new JLabel("\u6240\u6709\u56FE\u4E66\uFF1A");
 		label_2.setBounds(10, 113, 87, 36);
@@ -122,11 +113,48 @@ public class lendbook extends JFrame {
 		
 		DefaultTableModel dt1 = new DefaultTableModel(null,title);
 		
+		
+		action.loadBookInfo(dt1);
+		
+		
+		
+		table_2 = new JTable();
+		
 		JScrollPane scrollPane_1 = new JScrollPane();
 		scrollPane_1.setBounds(24, 439, 1044, 212);
 		contentPane.add(scrollPane_1);
 		
-		table_2 = new JTable();
+		
+		
 		scrollPane_1.setColumnHeaderView(table_2);
+		
+		JButton btnNewButton = new JButton("\u6DFB\u52A0\u4E66\u7C4D");
+		btnNewButton.setBounds(910, 393, 158, 36);
+		contentPane.add(btnNewButton);
+		
+		JLabel label_1 = new JLabel("\u8BFB\u8005\u59D3\u540D :");
+		label_1.setFont(new Font("宋体", Font.PLAIN, 16));
+		label_1.setBounds(259, 10, 87, 36);
+		contentPane.add(label_1);
+		
+		textField_1 = new JTextField();
+		textField_1.setColumns(10);
+		textField_1.setBounds(352, 6, 135, 40);
+		contentPane.add(textField_1);
+		
+		JLabel label_4 = new JLabel("\u53EF\u501F\u6570\u91CF :");
+		label_4.setFont(new Font("宋体", Font.PLAIN, 16));
+		label_4.setBounds(523, 6, 87, 36);
+		contentPane.add(label_4);
+		
+		textField_2 = new JTextField();
+		textField_2.setColumns(10);
+		textField_2.setBounds(624, 6, 135, 40);
+		contentPane.add(textField_2);
+		
+		JLabel label_5 = new JLabel("\u663E\u793A\u6240\u6709\u8BFB\u8005");
+		label_5.setFont(new Font("宋体", Font.PLAIN, 16));
+		label_5.setBounds(14, 67, 140, 36);
+		contentPane.add(label_5);
 	}
 }
