@@ -7,10 +7,15 @@ import java.awt.Image;
 import java.awt.Insets;
 import java.awt.Toolkit;
 
+import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
+import javax.swing.InputMap;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JRootPane;
+import javax.swing.KeyStroke;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import javax.swing.JTabbedPane;
@@ -32,6 +37,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.awt.SystemColor;
+
 import javax.swing.UIManager;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -73,12 +79,42 @@ public class MainPage extends JFrame implements ActionListener {
 		x = dim.width;
 		this.setSize(x, y);
 		//this.setSize(1366, 728);
-		// SimpleDateFormat sm=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
+		
+		
+		
+		
+		JRootPane rp= this.getRootPane(); 
+		KeyStroke stroke = KeyStroke.getKeyStroke("ESCAPE");
+		InputMap inputMap = rp.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+		inputMap.put(stroke, "ESCAPE");
+		rp.getActionMap().put("ESCAPE", new AbstractAction() {
+		public void actionPerformed(ActionEvent e) { 
+		System.exit(0);
+		} 
+		});
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.BLUE);
 		contentPane.setForeground(Color.BLUE);
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setUndecorated(true);
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
@@ -100,6 +136,8 @@ public class MainPage extends JFrame implements ActionListener {
 		JButton exitSystem = new JButton("\u9000\u51FA\u7CFB\u7EDF");
 		exitSystem.setFont(new Font("SimSun", Font.PLAIN, 12));
 		exitSystem.setBounds(10, 231, 93, 23);
+		exitSystem.addActionListener(this);
+		exitSystem.setActionCommand("exit");
 		contentPane.add(exitSystem);
 
 		JButton payForIt = new JButton("\u8F6F\u4EF6\u8D2D\u4E70");
@@ -110,11 +148,11 @@ public class MainPage extends JFrame implements ActionListener {
 		JPanel panel = new JPanel();
 		panel.setBackground(SystemColor.textHighlight);
 		panel.setForeground(Color.CYAN);
-		panel.setBounds(123, 59, 1237, 606);
+		panel.setBounds(124, 59, 1242, 627);
 		contentPane.add(panel);
 
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(0, 127, 1237, 479);
+		tabbedPane.setBounds(0, 127, 1242, 500);
 		tabbedPane.setFont(new Font("幼圆", Font.PLAIN, 15));
 
 		JPanel panel_2 = new JPanel();
@@ -380,10 +418,12 @@ public class MainPage extends JFrame implements ActionListener {
 		tabbedPane.addTab("\u4E66\u520A\u7BA1\u7406", null, panel_5, null);
 		panel_5.setLayout(null);
 
-		JButton button_16 = new JButton("书刊信息维护");
-		button_16.setFont(new Font("SimSun", Font.PLAIN, 12));
-		button_16.setBounds(60, 20, 120, 25);
-		panel_5.add(button_16);
+		JButton bookMaintenance = new JButton("书刊信息维护");
+		bookMaintenance.setFont(new Font("SimSun", Font.PLAIN, 12));
+		bookMaintenance.setBounds(60, 20, 120, 25);
+		bookMaintenance.addActionListener(this);
+		bookMaintenance.setActionCommand("bookmaintenance");
+		panel_5.add(bookMaintenance);
 
 		JButton button_17 = new JButton("出版单位设置");
 		button_17.setFont(new Font("SimSun", Font.PLAIN, 12));
@@ -684,7 +724,7 @@ public class MainPage extends JFrame implements ActionListener {
 		panel.add(tabbedPane);
 
 		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(0, 665, 1360, 34);
+		panel_1.setBounds(0, 685, 1376, 43);
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 
@@ -712,11 +752,16 @@ public class MainPage extends JFrame implements ActionListener {
 
 		JButton button = new JButton(
 				"    JiEr \u56FE \u4E66 \u7BA1 \u7406 \u7CFB \u7EDF   ");
+		button.setFont(new Font("幼圆", Font.BOLD, 16));
 		button.setBounds(550, 10, 300, 39);
+		Color c=new Color(0,0,255);//背影颜色随便设任意值,只起占位作用。  
+		button.setBackground(c);
+		button.setOpaque(false);//设置背景透明  
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (JOptionPane.showConfirmDialog(null, "正在打开JiEr官网，是否继续？",
 						"提醒", JOptionPane.YES_NO_OPTION) == 0)
+				{
 					if (java.awt.Desktop.isDesktopSupported()) {
 						try {
 							// 创建一个URI实例
@@ -733,6 +778,7 @@ public class MainPage extends JFrame implements ActionListener {
 							e.printStackTrace();
 						}
 					}
+				}
 			}
 		});
 		panel_8.setLayout(null);
@@ -746,7 +792,21 @@ public class MainPage extends JFrame implements ActionListener {
 		if("tushuliutong".equals(e.getActionCommand()))
 		{
 			bookCirculation tushuliutong = new bookCirculation();
-			tushuliutong.setVisible(true);;	
+			tushuliutong.setVisible(true);
+		}
+		if("exit".equals(e.getActionCommand()))
+		{
+			if (JOptionPane.showConfirmDialog(null, "正在关闭，是否继续？",
+					"提醒", JOptionPane.YES_NO_OPTION) == 0)
+			{
+
+				System.exit(0);
+			}
+		}
+		if("bookmaintenance".equals(e.getActionCommand()))
+		{
+			bookMaintenance bookMaintenance=new bookMaintenance();	
+			bookMaintenance.setVisible(true);
 		}
 	}
 }
