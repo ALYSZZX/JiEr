@@ -6,16 +6,22 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
+
 import java.awt.Window.Type;
+
 import javax.swing.JButton;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JFormattedTextField;
 import javax.swing.JList;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
+import javax.swing.JScrollPane;
 
 public class Information extends JFrame {
 
@@ -123,8 +129,16 @@ public class Information extends JFrame {
 		btnNewButton_10.setBounds(539, 20, 62, 23);
 		panel_1.add(btnNewButton_10);
 		
+		String[] title = {"读者标号","姓名","借阅次数","性别","出生日期","读者类型","注册日期","证件到期时间","身份证号","联系电话","电子邮件","工作单位"};
+		String[][] content = {}; 
+		
+		DefaultTableModel dt = new DefaultTableModel(content,title);
 		table = new JTable();
-		table.setBounds(702, 133, -694, 322);
-		contentPane.add(table);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(0, 144, 711, 311);
+		scrollPane.add(table);
+		contentPane.add(scrollPane);
+		scrollPane.setColumnHeaderView(table);
 	}
 }
