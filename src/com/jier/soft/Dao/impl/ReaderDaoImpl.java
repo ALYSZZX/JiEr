@@ -68,7 +68,7 @@ public class ReaderDaoImpl implements ReaderDao{
 				reader.setReader_name(rs.getString("reader_name"));
 				reader.setReader_money(rs.getDouble("reader_money"));
 				reader.setReader_type(rs.getString("reader_type"));
-				reader.setReader_book_conut(rs.getInt("reader_book_conut"));
+				reader.setReader_book_conut(rs.getInt("reader_book_count"));
 				reader.setReader_count(rs.getInt("reader_count"));
 				reader.setReader_phone(rs.getString("reader_phone"));
 				reader.setReader_email(rs.getString("reader_email"));
