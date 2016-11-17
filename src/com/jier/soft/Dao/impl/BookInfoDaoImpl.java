@@ -56,8 +56,25 @@ public class BookInfoDaoImpl implements BookInfoDao{
 
 	@Override
 	public boolean deleteBook(BookInfo[] books) {
-		// TODO Auto-generated method stub
-		return false;
+		Connection conn = null;
+		Statement stat = null;
+		boolean flagg = true;
+		try{
+			conn= DBUtil.getConnection();
+			stat=conn.createStatement();
+			for(BookInfo book : books){
+				String sql = "update bookinfo set dr=0 where book_id='"+book.getBook_id()+"'";
+				int flag = stat.executeUpdate(sql);
+				if(flag<=0)
+					flagg = false;
+			}
+		}catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			DBUtil.close(conn, stat, null);
+		}
+		return flagg;
 	}
 
 	@Override
