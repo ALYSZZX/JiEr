@@ -92,10 +92,6 @@ public class bookMaintenance extends JFrame {
 		panel_1.add(lblNewLabel);
 		
 		JComboBox<String> comboBox = new JComboBox();
-//		DefaultComboBoxModel model = new DefaultComboBoxModel(); 
-//		model.addElement("自动化"); 
-//		model.addElement("自动化1"); 
-//		JComboBox comboBox = new JComboBox(model);
 		comboBox.setBounds(132, 10, 144, 20);
 		comboBox.addItem("任意方式");
 		comboBox.addItem("书刊编号");
@@ -133,7 +129,8 @@ public class bookMaintenance extends JFrame {
 				"图书名称","作者","图书分类","总册数","借出册数","剩余册数","可借用时间","借出次数","出版社","I S B N","出版次数","单价","状态"};
 		dt = new DefaultTableModel(null,title);	
 		BookInfoAction bookinfo=new BookInfoAction();
-		bookinfo.loadBookInfo(dt);	
+		bookinfo.loadBookInfo(dt);
+		
 		table=new JTable(dt);
 		table.setBackground(Color.WHITE);
 		
