@@ -63,7 +63,7 @@ public class MainPage extends JFrame implements ActionListener {
 		y = dim.height - y;
 		x = dim.width;
 		this.setSize(x, y);
-		//this.setSize(1366, 728);
+		this.setSize(1366, 728);
 
 		
 		
@@ -773,6 +773,7 @@ public class MainPage extends JFrame implements ActionListener {
 		}
 		if("bookmaintenance".equals(e.getActionCommand()))
 		{
+			
 			bookMaintenance bookMaintenance=new bookMaintenance();	
 			bookMaintenance.setVisible(true);
 		}
