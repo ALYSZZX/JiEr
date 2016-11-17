@@ -14,7 +14,7 @@ import com.jier.soft.service.impl.ReaderServiceImpl;
 public class ReaderAction {
 
 	/***
-	 *加载读者数据 
+	 * 加载读者数据
 	 */
 	public void loadReader(DefaultTableModel dt){
 		
@@ -24,34 +24,35 @@ public class ReaderAction {
 		
 		for(int i =0; i < list.size(); i++){
 			Reader reader = list.get(i);
-			Object[] obj ={reader.getReader_name() };//具体加载的行
+			Object[] obj ={reader.getReader_id(),reader.getReader_name(),reader.getReader_count(),reader.getReader_type(),reader.getReader_money() };//具体加载的行
 			dt.addRow(obj);
 		}
 		
 	}
-	
+
 	/***
-	 *先删除在加载 
+	 * 先删除在加载
 	 */
-	public void loadReaderbeforDel(DefaultTableModel dt){
-		//遍历表格中数据
-		for(int i =dt.getRowCount()-1;i>=0; i--){
+	public void loadReaderbeforDel(DefaultTableModel dt) {
+		// 遍历表格中数据
+		for (int i = dt.getRowCount() - 1; i >= 0; i--) {
 			dt.removeRow(i);
 		}
 		loadReader(dt);
 	}
-	
+
 	/***
-	 *删除图书 
+	 * 删除图书
 	 */
-	public void deleteReader(Reader[] readers){
+	public void deleteReader(Reader[] readers) {
 		ReaderService service = new ReaderServiceImpl();
 		service.deleteReader(readers);
 	}
+
 	/***
-	 *添加读者 
+	 * 添加读者
 	 */
-	public void addReader(Reader[] readers){
+	public void addReader(Reader[] readers) {
 		ReaderService service = new ReaderServiceImpl();
 		service.addReader(readers);
 	}
