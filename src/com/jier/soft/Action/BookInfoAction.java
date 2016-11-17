@@ -45,4 +45,12 @@ public class BookInfoAction {
 		BookInfoService service = new BookInfoServiceImlpl();
 		service.deleteBook(books);
 	}
+	
+	/***
+	 *‘ˆº”Õº È 
+	 */
+	public void addBook(BookInfo[] book){
+		BookInfoService service = new BookInfoServiceImlpl();
+		service.addBook(book);
+	}
 }

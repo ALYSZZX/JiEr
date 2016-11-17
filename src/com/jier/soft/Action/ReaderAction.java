@@ -16,15 +16,15 @@ public class ReaderAction {
 	/***
 	 *加载读者数据 
 	 */
-	public void loadBookInfo(DefaultTableModel dt){
+	public void loadReader(DefaultTableModel dt){
 		
 		//从Service中获取数据
 		ReaderService service = new ReaderServiceImpl();
 		List<Reader> list = service.getAllReaders();
 		
 		for(int i =0; i < list.size(); i++){
-			Reader book = list.get(i);
-			Object[] obj ={book.getReader_name() };//具体加载的行
+			Reader reader = list.get(i);
+			Object[] obj ={reader.getReader_name() };//具体加载的行
 			dt.addRow(obj);
 		}
 		
@@ -33,19 +33,26 @@ public class ReaderAction {
 	/***
 	 *先删除在加载 
 	 */
-	public void loadBook(DefaultTableModel dt){
+	public void loadReaderbeforDel(DefaultTableModel dt){
 		//遍历表格中数据
 		for(int i =dt.getRowCount()-1;i>=0; i--){
 			dt.removeRow(i);
 		}
-		loadBookInfo(dt);
+		loadReader(dt);
 	}
 	
 	/***
 	 *删除图书 
 	 */
-	public void deleteBook(BookInfo[] books){
-		BookInfoService service = new BookInfoServiceImlpl();
-		service.deleteBook(books);
+	public void deleteReader(Reader[] readers){
+		ReaderService service = new ReaderServiceImpl();
+		service.deleteReader(readers);
+	}
+	/***
+	 *添加读者 
+	 */
+	public void addReader(Reader[] readers){
+		ReaderService service = new ReaderServiceImpl();
+		service.addReader(readers);
 	}
 }

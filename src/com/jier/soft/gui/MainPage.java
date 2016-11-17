@@ -26,6 +26,7 @@ import javax.swing.KeyStroke;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 
+import com.jier.soft.Util.Centre;
 import com.jier.soft.Util.panelWithBackground;
 
 public class MainPage extends JFrame implements ActionListener {
@@ -56,18 +57,12 @@ public class MainPage extends JFrame implements ActionListener {
 	 * Create the frame.
 	 */
 	public MainPage() {
-	//	setResizable(false);
+		//setResizable(false);
 		setTitle("    JiEr \u56FE \u4E66 \u7BA1 \u7406 \u7CFB \u7EDF   ");
-		int x, y;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		Insets screenInsets = Toolkit.getDefaultToolkit().getScreenInsets(
-				this.getGraphicsConfiguration());
-		y = screenInsets.bottom;
-		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-		y = dim.height - y;
-		x = dim.width;
-		this.setSize(x, y);
-		this.setSize(1366, 728);
+		
+		Centre.centre(this, 1366, 767);
+		//this.setSize(1366, 728);
 
 		
 		
@@ -91,50 +86,51 @@ public class MainPage extends JFrame implements ActionListener {
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.BLUE);
 		contentPane.setForeground(Color.BLUE);
-		setUndecorated(true);
+		//setUndecorated(true);
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
 		JButton shiftWork = new JButton("\u6362\u73ED\u767B\u5F55");
-		shiftWork.setFont(new Font("SimSun", Font.PLAIN, 12));
-		shiftWork.setBounds(10, 59, 93, 23);
+		shiftWork.setFont(new Font("微软雅黑", Font.BOLD, 16));
+		shiftWork.setBounds(29, 89, 100, 51);
 		contentPane.add(shiftWork);
 
 		JButton systemHelp = new JButton("\u7CFB\u7EDF\u5E2E\u52A9");
-		systemHelp.setFont(new Font("SimSun", Font.PLAIN, 12));
-		systemHelp.setBounds(10, 119, 93, 23);
+		systemHelp.setFont(new Font("微软雅黑", Font.BOLD, 16));
+		systemHelp.setBounds(29, 180, 100, 51);
 		contentPane.add(systemHelp);
 
 		JButton aboutSoft = new JButton("\u5173\u4E8E\u8F6F\u4EF6");
-		aboutSoft.setFont(new Font("SimSun", Font.PLAIN, 12));
-		aboutSoft.setBounds(10, 178, 93, 23);
+		aboutSoft.setFont(new Font("微软雅黑", Font.BOLD, 16));
+		aboutSoft.setBounds(29, 266, 100, 51);
 		contentPane.add(aboutSoft);
 
 		JButton exitSystem = new JButton("\u9000\u51FA\u7CFB\u7EDF");
-		exitSystem.setFont(new Font("SimSun", Font.PLAIN, 12));
-		exitSystem.setBounds(10, 231, 93, 23);
+		exitSystem.setFont(new Font("微软雅黑", Font.BOLD, 16));
+		exitSystem.setBounds(29, 352, 100, 51);
 		exitSystem.addActionListener(this);
 		exitSystem.setActionCommand("exit");
 		contentPane.add(exitSystem);
 
 		JButton payForIt = new JButton("\u8F6F\u4EF6\u8D2D\u4E70");
-		payForIt.setFont(new Font("SimSun", Font.PLAIN, 12));
-		payForIt.setBounds(10, 295, 93, 23);
+		payForIt.setFont(new Font("微软雅黑", Font.BOLD, 16));
+		payForIt.setBounds(29, 444, 100, 51);
 		contentPane.add(payForIt);
 
 		JPanel panel = new JPanel();
 		panel.setBackground(SystemColor.textHighlight);
 		panel.setForeground(Color.CYAN);
-		panel.setBounds(124, 59, 1242, 627);
+		panel.setBounds(167, 59, 1199, 627);
 		contentPane.add(panel);
 
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(0, 127, 1242, 500);
+		tabbedPane.setBounds(0, 175, 1242, 452);
 		tabbedPane.setFont(new Font("幼圆", Font.PLAIN, 15));
 
 		JPanel panel_2 = new JPanel();
 		panel_2.setBackground(Color.CYAN);
 		tabbedPane.addTab("\u67E5\u8BE2\u7EDF\u8BA1", null, panel_2, null);
+		tabbedPane.setBackgroundAt(0, Color.WHITE);
 		panel_2.setLayout(null);
 
 		JButton btnNewButton = new JButton(
@@ -679,20 +675,20 @@ public class MainPage extends JFrame implements ActionListener {
 		panel_7.add(label_68);
 
 		JButton lendBook = new JButton("\u501F\u9605\u56FE\u4E66");
-		lendBook.setBounds(27, 35, 93, 23);
-		lendBook.setFont(new Font("SimSun", Font.PLAIN, 12));
+		lendBook.setBounds(72, 65, 102, 48);
+		lendBook.setFont(new Font("幼圆", Font.BOLD, 16));
 
 		JButton returnBook = new JButton("\u5F52\u8FD8\u56FE\u4E66");
-		returnBook.setBounds(171, 35, 93, 23);
-		returnBook.setFont(new Font("SimSun", Font.PLAIN, 12));
+		returnBook.setBounds(245, 65, 102, 48);
+		returnBook.setFont(new Font("幼圆", Font.BOLD, 16));
 
 		JButton renewBook = new JButton("\u7EED\u501F\u56FE\u4E66");
-		renewBook.setBounds(318, 35, 93, 23);
-		renewBook.setFont(new Font("SimSun", Font.PLAIN, 12));
+		renewBook.setBounds(427, 65, 102, 48);
+		renewBook.setFont(new Font("幼圆", Font.BOLD, 16));
 
 		JButton quiryLending = new JButton("\u501F\u9605\u67E5\u8BE2");
-		quiryLending.setBounds(478, 35, 93, 23);
-		quiryLending.setFont(new Font("SimSun", Font.PLAIN, 12));
+		quiryLending.setBounds(609, 65, 102, 48);
+		quiryLending.setFont(new Font("幼圆", Font.BOLD, 16));
 		panel.setLayout(null);
 		panel.add(lendBook);
 		panel.add(returnBook);
@@ -701,7 +697,7 @@ public class MainPage extends JFrame implements ActionListener {
 		panel.add(tabbedPane);
 
 		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(0, 685, 1376, 43);
+		panel_1.setBounds(0, 685, 1376, 40);
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 
@@ -724,13 +720,13 @@ public class MainPage extends JFrame implements ActionListener {
 		Image image = new ImageIcon("source/1.png").getImage();
 		JPanel panel_8 = new panelWithBackground(image);
 		panel_8.setBackground(new Color(255, 0, 255));
-		panel_8.setBounds(0, 0, 1376, 58);
+		panel_8.setBounds(0, 0, 1376, 59);
 		contentPane.add(panel_8);
 
 		JButton button = new JButton(
 				"    JiEr \u56FE \u4E66 \u7BA1 \u7406 \u7CFB \u7EDF   ");
 		button.setFont(new Font("幼圆", Font.BOLD, 16));
-		button.setBounds(550, 10, 300, 39);
+		button.setBounds(550, 0, 300, 59);
 		Color c=new Color(0,0,255);//背影颜色随便设任意值,只起占位作用。  
 		button.setBackground(c);
 		button.setOpaque(false);//设置背景透明  
