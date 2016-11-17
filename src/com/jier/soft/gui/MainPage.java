@@ -30,6 +30,10 @@ import com.jier.soft.Util.panelWithBackground;
 
 public class MainPage extends JFrame implements ActionListener {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8721542428268039721L;
 	private JPanel contentPane;
 
 	/**
@@ -74,6 +78,11 @@ public class MainPage extends JFrame implements ActionListener {
 		InputMap inputMap = rp.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
 		inputMap.put(stroke, "ESCAPE");
 		rp.getActionMap().put("ESCAPE", new AbstractAction() {
+		/**
+			 * 
+			 */
+			private static final long serialVersionUID = -7237509441184843219L;
+
 		public void actionPerformed(ActionEvent e) { 
 		System.exit(0);
 		} 
