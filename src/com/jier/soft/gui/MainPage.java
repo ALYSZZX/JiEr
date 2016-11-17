@@ -1,13 +1,10 @@
 package com.jier.soft.gui;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Image;
-import java.awt.Insets;
 import java.awt.SystemColor;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -57,17 +54,11 @@ public class MainPage extends JFrame implements ActionListener {
 	 * Create the frame.
 	 */
 	public MainPage() {
-		//setResizable(false);
 		setTitle("    JiEr \u56FE \u4E66 \u7BA1 \u7406 \u7CFB \u7EDF   ");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		Centre.centre(this, 1366, 767);
-		//this.setSize(1366, 728);
-
-		
-		
-		
-		
+		Centre.centre(this, 1366, 725);
+		setResizable(false);
+	
 		JRootPane rp= this.getRootPane(); 
 		KeyStroke stroke = KeyStroke.getKeyStroke("ESCAPE");
 		InputMap inputMap = rp.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
@@ -86,7 +77,7 @@ public class MainPage extends JFrame implements ActionListener {
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.BLUE);
 		contentPane.setForeground(Color.BLUE);
-		//setUndecorated(true);
+		setUndecorated(true);
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
