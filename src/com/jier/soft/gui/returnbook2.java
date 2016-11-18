@@ -69,8 +69,8 @@ public class returnbook2 extends JFrame {
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
-		JLabel label_2 = new JLabel("\u6240\u6709\u56FE\u4E66\uFF1A");
-		label_2.setBounds(10, 113, 87, 36);
+		JLabel label_2 = new JLabel("\u8BE5\u8BFB\u8005\u6240\u501F\u56FE\u4E66\uFF1A");
+		label_2.setBounds(10, 113, 121, 36);
 		contentPane.add(label_2);
 		
 		
@@ -88,11 +88,11 @@ public class returnbook2 extends JFrame {
 		
 		*/
 
-		JLabel label_3 = new JLabel("\u672C\u6B21\u501F\u9605\u56FE\u4E66\uFF1A");
+		JLabel label_3 = new JLabel("\u672C\u6B21\u5F52\u8FD8\u56FE\u4E66\uFF1A");
 		label_3.setBounds(14, 390, 158, 36);
 		contentPane.add(label_3);
 		
-		JButton button = new JButton("\u501F\u4E66\u786E\u5B9A");
+		JButton button = new JButton("\u786E\u8BA4\u8FD8\u4E66");
 		button.setBounds(910, 655, 158, 36);
 		contentPane.add(button);
 		

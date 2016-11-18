@@ -92,7 +92,7 @@ public class lendbook extends JFrame {
 		label_3.setBounds(14, 390, 158, 36);
 		contentPane.add(label_3);
 		
-		JButton button = new JButton("\u501F\u4E66\u786E\u5B9A");
+		JButton button = new JButton("\u786E\u8BA4\u501F\u4E66");
 		button.setBounds(910, 655, 158, 36);
 		contentPane.add(button);
 		

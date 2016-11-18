@@ -69,8 +69,8 @@ public class renewbook2 extends JFrame {
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
-		JLabel label_2 = new JLabel("\u6240\u6709\u56FE\u4E66\uFF1A");
-		label_2.setBounds(10, 113, 87, 36);
+		JLabel label_2 = new JLabel("\u8BE5\u8BFB\u8005\u6240\u501F\u56FE\u4E66\uFF1A");
+		label_2.setBounds(10, 113, 126, 36);
 		contentPane.add(label_2);
 		
 		
@@ -88,11 +88,11 @@ public class renewbook2 extends JFrame {
 		
 		*/
 
-		JLabel label_3 = new JLabel("\u672C\u6B21\u501F\u9605\u56FE\u4E66\uFF1A");
+		JLabel label_3 = new JLabel("\u672C\u6B21\u7EED\u501F\u56FE\u4E66\uFF1A");
 		label_3.setBounds(14, 390, 158, 36);
 		contentPane.add(label_3);
 		
-		JButton button = new JButton("\u501F\u4E66\u786E\u5B9A");
+		JButton button = new JButton("\u786E\u8BA4\u7EED\u501F");
 		button.setBounds(910, 655, 158, 36);
 		contentPane.add(button);
 		
@@ -151,10 +151,5 @@ public class renewbook2 extends JFrame {
 		textField_2.setColumns(10);
 		textField_2.setBounds(624, 6, 135, 40);
 		contentPane.add(textField_2);
-		
-		JLabel label_5 = new JLabel("\u663E\u793A\u6240\u6709\u8BFB\u8005");
-		label_5.setFont(new Font("ËÎÌו", Font.PLAIN, 16));
-		label_5.setBounds(14, 67, 140, 36);
-		contentPane.add(label_5);
 	}
 }
