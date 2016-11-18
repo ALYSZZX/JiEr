@@ -33,7 +33,7 @@ public class updateBook extends JFrame implements ActionListener {
 	private JTextField ISBN;
 	private JTextField bookPrice;
 	private JTextField bookPubtimes;
-	private String bookType;
+	private String bookType="";
 	private JComboBox comboBox;
     private JTextField bookRemain;
     private JTextField bookStatus;
@@ -77,54 +77,54 @@ public class updateBook extends JFrame implements ActionListener {
 		
         bookid=book.getBook_id();
         
-		bookAuthor = new JTextField();
+		bookAuthor = new JTextField( );
 		bookAuthor.setColumns(10);
 		bookAuthor.setBounds(383, 10, 153, 21);
 		bookAuthor.setText(book.getBook_author());
 		contentPane.add(bookAuthor);
 		
-		bookName = new JTextField();
+		bookName = new JTextField( );
 		bookName.setBounds(99, 10, 153, 21);
 		contentPane.add(bookName);
 		bookName.setColumns(10);
 		bookName.setText(book.getBook_name());
 
 
-		publishingHouse = new JTextField();
+		publishingHouse = new JTextField( );
 		publishingHouse.setColumns(10);
 		publishingHouse.setBounds(99, 54, 153, 21);
 		contentPane.add(publishingHouse);
 		publishingHouse.setText(book.getBook_publish());
 
 
-		bookCount = new JTextField();
+		bookCount = new JTextField( );
 		bookCount.setColumns(10);
 		bookCount.setBounds(99, 100, 153, 21);
 		contentPane.add(bookCount);
 		bookCount.setText(String.valueOf(book.getBook_count()));
 
 
-		bookLendTime = new JTextField();
+		bookLendTime = new JTextField( );
 		bookLendTime.setColumns(10);
 		bookLendTime.setBounds(383, 100, 153, 21);
 		contentPane.add(bookLendTime);
 		bookLendTime.setText(String.valueOf(book.getBook_lend_time()));
 		
-		ISBN = new JTextField();
+		ISBN = new JTextField( );
 		ISBN.setColumns(10);
 		ISBN.setBounds(99, 147, 153, 21);
 		ISBN.setText(String.valueOf(book.getISBN()));
 		contentPane.add(ISBN);
 
 		
-		bookPrice = new JTextField();
+		bookPrice = new JTextField( );
 		bookPrice.setColumns(10);
 		bookPrice.setBounds(383, 147, 153, 21);
 		bookPrice.setText(String.valueOf(book.getBook_price()));
 		contentPane.add(bookPrice);
 		
 
-		bookPubtimes = new JTextField();
+		bookPubtimes = new JTextField( );
 		bookPubtimes.setColumns(10);
 		bookPubtimes.setBounds(99, 196, 153, 21);
 		bookPubtimes.setText(String.valueOf(book.getBook_pubtimes()));
@@ -143,7 +143,7 @@ public class updateBook extends JFrame implements ActionListener {
 		for(key=0;key<32;key++)
 			if(String.valueOf(book.getBook_type()).equals(type[key]))
 				break;
-			
+		bookType=book.getBook_type();
 		comboBox = new JComboBox(type);
 		comboBox.setFont(new Font("SimSun", Font.PLAIN, 12));
 		comboBox.setBounds(383, 55, 153, 21);
@@ -152,25 +152,25 @@ public class updateBook extends JFrame implements ActionListener {
 		comboBox.addActionListener(this);
 		comboBox.setActionCommand("typeselected");
 
-		bookRemain = new JTextField();
+		bookRemain = new JTextField( );
 		bookRemain.setColumns(10);
 		bookRemain.setBounds(383, 196, 153, 21);
 		contentPane.add(bookRemain);
 		bookRemain.setText(String.valueOf(book.getBook_remain()));
 		
-		bookStatus = new JTextField();
+		bookStatus = new JTextField( );
 		bookStatus.setColumns(10);
 		bookStatus.setBounds(99, 277, 153, 21);
 		contentPane.add(bookStatus);
 		bookStatus.setText(String.valueOf(book.getBook_status()));
 		
-		bookLenCount = new JTextField();
+		bookLenCount = new JTextField( );
 		bookLenCount.setColumns(10);
 		bookLenCount.setBounds(383, 236, 153, 21);
 		contentPane.add(bookLenCount);
 		bookLenCount.setText(String.valueOf(book.getBook_lend_count()));
 		
-		bookLend = new JTextField();
+		bookLend = new JTextField( );
 		bookLend.setColumns(10);
 		bookLend.setBounds(99, 236, 153, 21);
 		contentPane.add(bookLend);
@@ -269,19 +269,21 @@ public class updateBook extends JFrame implements ActionListener {
 
 	public boolean update()
 	{
-		if(Integer.parseInt(this.bookCount.getText())!=Integer.parseInt(this.bookLend.getText())
+		
+		if(this.bookAuthor.getText().length()==0||this.bookName.getText().length()==0||this.bookCount.getText().length()==0||this.bookPrice.getText().length()==0||bookType.length()==0||this.bookLendTime.getText().length()==0||this.ISBN.getText().length()==0||this.publishingHouse.getText().length()==0||this.bookLend.getText().length()==0||this.bookRemain.getText().length()==0||this.bookLenCount.getText().length()==0||this.bookStatus.getText().length()==0||this.bookCount.getText().length()==0)
+		{
+			JOptionPane.showMessageDialog(this, "请勿留空", "警告",JOptionPane.WARNING_MESSAGE);
+			return false; 
+		}
+		else if(Integer.parseInt(this.bookCount.getText())!=Integer.parseInt(this.bookLend.getText())
 				+Integer.parseInt(this.bookRemain.getText()))
 		{
 			JOptionPane.showMessageDialog(this, "图书的总册数应为剩余册数与借出册数之和", "警告",JOptionPane.WARNING_MESSAGE);
 		return false; 
 		}
-		else if(this.bookAuthor.getText()!=null&&this.bookName.getText()!=null&&this.bookCount.getText()!=null&&this.bookPrice.getText()!=null&&bookType!=null&&this.bookLendTime.getText()!=null&&this.ISBN.getText()!=null&&this.publishingHouse.getText()!=null&&this.bookLend.getText()!=null&&this.bookRemain.getText()!=null&&this.bookLenCount.getText()!=null&&this.bookStatus.getText()!=null&&this.bookCount.getText()!=null)
-		{
-			JOptionPane.showMessageDialog(this, "请勿留空", "警告",JOptionPane.WARNING_MESSAGE);
-			return false; 
-		}
 			else
 		{
+		System.out.println("here");
 		BookInfoAction update = new BookInfoAction();
 		BookInfo book = new BookInfo();
 		System.out.println("id"+bookid);
@@ -299,8 +301,7 @@ public class updateBook extends JFrame implements ActionListener {
         book.setBook_status(Integer.parseInt(this.bookStatus.getText()));
         book.setISBN(this.ISBN.getText());
         book.setBook_type(bookType);	
-        
-		BookInfo[] books = { book };
+    	BookInfo[] books = { book };
 		update.updateBook(books);
 		return true; 
 		}

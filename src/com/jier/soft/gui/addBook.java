@@ -36,7 +36,7 @@ public class addBook extends JFrame implements ActionListener {
 	private JTextField ISBN;
 	private JTextField price;
 	private JTextField bookPubtimes;
-	private String bookType;
+	private String bookType="";
 	private JComboBox<?> comboBox;
 
 	/**
@@ -75,7 +75,7 @@ public class addBook extends JFrame implements ActionListener {
 		lblNewLabel.setBounds(30, 30, 100, 20);
 		contentPane.add(lblNewLabel);
 
-		bookName = new JTextField();
+		bookName = new JTextField(null);
 		bookName.setBounds(99, 30, 153, 21);
 		contentPane.add(bookName);
 		bookName.setColumns(10);
@@ -85,7 +85,7 @@ public class addBook extends JFrame implements ActionListener {
 		label.setBounds(314, 30, 100, 20);
 		contentPane.add(label);
 
-		bookAuthor = new JTextField();
+		bookAuthor = new JTextField(null);
 		bookAuthor.setColumns(10);
 		bookAuthor.setBounds(383, 30, 153, 21);
 		contentPane.add(bookAuthor);
@@ -100,7 +100,7 @@ public class addBook extends JFrame implements ActionListener {
 		label_2.setBounds(30, 78, 100, 20);
 		contentPane.add(label_2);
 
-		publishingHouse = new JTextField();
+		publishingHouse = new JTextField(null);
 		publishingHouse.setColumns(10);
 		publishingHouse.setBounds(99, 78, 153, 21);
 		contentPane.add(publishingHouse);
@@ -110,7 +110,7 @@ public class addBook extends JFrame implements ActionListener {
 		label_3.setBounds(30, 132, 100, 20);
 		contentPane.add(label_3);
 
-		bookCount = new JTextField();
+		bookCount = new JTextField(null);
 		bookCount.setColumns(10);
 		bookCount.setBounds(99, 132, 153, 21);
 		contentPane.add(bookCount);
@@ -120,7 +120,7 @@ public class addBook extends JFrame implements ActionListener {
 		label_4.setBounds(314, 132, 100, 20);
 		contentPane.add(label_4);
 
-		bookLendTime = new JTextField();
+		bookLendTime = new JTextField(null);
 		bookLendTime.setColumns(10);
 		bookLendTime.setBounds(383, 132, 153, 21);
 		contentPane.add(bookLendTime);
@@ -130,7 +130,7 @@ public class addBook extends JFrame implements ActionListener {
 		lblISB.setBounds(30, 187, 100, 20);
 		contentPane.add(lblISB);
 
-		ISBN = new JTextField();
+		ISBN = new JTextField(null);
 		ISBN.setColumns(10);
 		ISBN.setBounds(99, 187, 153, 21);
 		contentPane.add(ISBN);
@@ -140,7 +140,7 @@ public class addBook extends JFrame implements ActionListener {
 		d.setBounds(314, 187, 100, 20);
 		contentPane.add(d);
 
-		price = new JTextField();
+		price = new JTextField(null);
 		price.setColumns(10);
 		price.setBounds(383, 187, 153, 21);
 		contentPane.add(price);
@@ -168,7 +168,7 @@ public class addBook extends JFrame implements ActionListener {
 		btnCancel.setBounds(416, 296, 120, 30);
 		contentPane.add(btnCancel);
 
-		bookPubtimes = new JTextField();
+		bookPubtimes = new JTextField(null);
 		bookPubtimes.setColumns(10);
 		bookPubtimes.setBounds(99, 236, 153, 21);
 		contentPane.add(bookPubtimes);
@@ -199,10 +199,15 @@ public class addBook extends JFrame implements ActionListener {
 		bookMaintenance.setVisible(true);
 	}
 
-	public void add()
+	public boolean add()
 	{
-	
-		if(this.bookAuthor.getText().toString()!=null&&this.bookName.getText().toString()!=null&&this.bookCount.getText().toString()!=null&&this.price.getText()!=null&&bookType!=null&&this.bookLendTime.getText().toString()!=null&&this.ISBN.getText().toString()!=null&&this.publishingHouse.getText().toString()!=null&&this.bookCount.getText().toString()!=null)
+		System.out.println(bookType.length());
+		if(this.bookAuthor.getText().length()==0||this.bookName.getText().length()==0||this.bookCount.getText().length()==0||this.price.getText().length()==0||bookType.length()==0||this.bookLendTime.getText().length()==0||this.ISBN.getText().length()==0||this.publishingHouse.getText().length()==0||this.bookCount.getText().length()==0)
+		{
+			JOptionPane.showMessageDialog(this, "ÇëÎðÁô¿Õ", "¾¯¸æ",JOptionPane.WARNING_MESSAGE);
+		    return false;	
+		}
+		else
 		{
 			BookInfoAction add = new BookInfoAction();
 			BookInfo book = new BookInfo();
@@ -223,10 +228,8 @@ public class addBook extends JFrame implements ActionListener {
 			
 		BookInfo[] books = { book };
 	add.addBook(books);
+	return true;
 		}
-		else 
-			JOptionPane.showMessageDialog(this, "ÇëÎðÁô¿Õ", "¾¯¸æ",JOptionPane.WARNING_MESSAGE);
-		
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -237,7 +240,7 @@ public class addBook extends JFrame implements ActionListener {
 		}
 
 		if ("yesandexit".equals(e.getActionCommand())) {
-			add();
+			if(add())
 			back();
 		}
 		if ("typeselected".equals(e.getActionCommand())) {

@@ -243,6 +243,11 @@ if(limiter!=null)
 			BookInfoAction action=new BookInfoAction();
 			action.loadSelectedBookInfo(dt, limiter, value);
 }	
+else
+{
+	BookInfoAction action=new BookInfoAction();
+	action.loadBook(dt);;	
+}
 		}
 		if("typeselected".equals(e.getActionCommand()))
 		{
