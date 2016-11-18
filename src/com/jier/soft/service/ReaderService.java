@@ -14,4 +14,7 @@ public interface ReaderService {
 			public boolean addReader(Reader[] readers);
 			//更新读者信息
 			public boolean updateReader(Reader[] readers);
+			
+			//按条件查询读者
+			public List<Reader> queryReader(String queryA,String queryF);
 }

@@ -27,10 +27,11 @@ public class ReaderInfo extends JFrame implements ActionListener{
 	 */
 	private static final long serialVersionUID = -1457511339404888173L;
 	private JPanel contentPane;
-	private JTextField textField;
+	private JTextField queryField;
 	private JTable table;
 	private ReaderAction action = new ReaderAction();
 	private DefaultTableModel dt;
+	private JComboBox<String> comboBox;
 	/**
 	 * Launch the application.
 	 */
@@ -106,13 +107,13 @@ public class ReaderInfo extends JFrame implements ActionListener{
 		JLabel lblNewLabel = new JLabel(
 				"\u67E5\u8BE2\u65B9\u5F0F\uFF1A");
 		lblNewLabel.setFont(new Font("宋体", Font.PLAIN, 18));
-		lblNewLabel.setBounds(38, 12, 90, 66);
+		lblNewLabel.setBounds(24, 12, 90, 66);
 		panel_1.add(lblNewLabel);
 
-		JComboBox<String> comboBox = new JComboBox<String> ();
+		comboBox = new JComboBox<String> ();
 		comboBox.setFont(new Font("宋体", Font.PLAIN, 18));
-		comboBox.setBounds(142, 29, 128, 33);
-		comboBox.addItem("读者编号");
+		comboBox.setBounds(128, 29, 142, 33);
+		comboBox.addItem("读者学(工)号");
 		comboBox.addItem("读者姓名");
 		comboBox.addItem("读者电话");
 		comboBox.addItem("读者邮箱");
@@ -124,11 +125,11 @@ public class ReaderInfo extends JFrame implements ActionListener{
 		lblNewLabel_1.setBounds(300, 24, 164, 42);
 		panel_1.add(lblNewLabel_1);
 
-		textField = new JTextField();
-		textField.setFont(new Font("宋体", Font.PLAIN, 18));
-		textField.setBounds(478, 23, 174, 42);
-		panel_1.add(textField);
-		textField.setColumns(10);
+		queryField = new JTextField();
+		queryField.setFont(new Font("宋体", Font.PLAIN, 18));
+		queryField.setBounds(478, 23, 174, 42);
+		panel_1.add(queryField);
+		queryField.setColumns(10);
 
 		JButton btnNewButton_9 = new JButton("\u9AD8\u7EA7\u67E5\u8BE2");
 		btnNewButton_9.setFont(new Font("宋体", Font.BOLD, 18));
@@ -138,6 +139,8 @@ public class ReaderInfo extends JFrame implements ActionListener{
 		JButton btnNewButton_10 = new JButton("\u67E5\u8BE2");
 		btnNewButton_10.setFont(new Font("宋体", Font.BOLD, 18));
 		btnNewButton_10.setBounds(681, 22, 104, 47);
+		btnNewButton_10.addActionListener(this);
+		btnNewButton_10.setActionCommand("query");
 		panel_1.add(btnNewButton_10);
 
 		String[] title = { "读者编号","读者学(工)号", "读者姓名","读者类型","读者手机","读者邮箱","已借阅次数","总借阅次数","账户余额","读者状态" };
@@ -183,6 +186,18 @@ public class ReaderInfo extends JFrame implements ActionListener{
 			}else{
 				JOptionPane.showMessageDialog(this, "请选中一名读者！","提示框",JOptionPane.INFORMATION_MESSAGE);
 			}
+		}
+		if("query".equals(e.getActionCommand())){
+			String tiaojian =(String) comboBox.getSelectedItem();
+			String queryA = "";
+			switch(tiaojian){
+				case "读者学(工)号":{queryA="reader_number";break;}
+				case "读者姓名":{queryA="reader_name";break;}
+				case "读者电话":{queryA="reader_phone";break;}
+				case "读者邮箱":{queryA="reader_email";break;}
+			}
+			String queryF=queryField.getText();
+			action.queryReader(queryA,queryF,dt);
 		}
 	}
 
