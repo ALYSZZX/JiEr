@@ -30,6 +30,7 @@ public class BookInfoAction {
 
 public void loadSelectedBookInfo(DefaultTableModel dt,String limiter,String value){		
 		//从Service中获取数据
+System.out.println("here");
 	for(int i =dt.getRowCount()-1;i>=0; i--){
 		dt.removeRow(i);
 	}

@@ -76,6 +76,7 @@ public class updateBook extends JFrame implements ActionListener {
       
 		
         bookid=book.getBook_id();
+        
 		bookAuthor = new JTextField();
 		bookAuthor.setColumns(10);
 		bookAuthor.setBounds(383, 10, 153, 21);
@@ -274,7 +275,12 @@ public class updateBook extends JFrame implements ActionListener {
 			JOptionPane.showMessageDialog(this, "图书的总册数应为剩余册数与借出册数之和", "警告",JOptionPane.WARNING_MESSAGE);
 		return false; 
 		}
-		else
+		else if(this.bookAuthor.getText()!=null&&this.bookName.getText()!=null&&this.bookCount.getText()!=null&&this.bookPrice.getText()!=null&&bookType!=null&&this.bookLendTime.getText()!=null&&this.ISBN.getText()!=null&&this.publishingHouse.getText()!=null&&this.bookLend.getText()!=null&&this.bookRemain.getText()!=null&&this.bookLenCount.getText()!=null&&this.bookStatus.getText()!=null&&this.bookCount.getText()!=null)
+		{
+			JOptionPane.showMessageDialog(this, "请勿留空", "警告",JOptionPane.WARNING_MESSAGE);
+			return false; 
+		}
+			else
 		{
 		BookInfoAction update = new BookInfoAction();
 		BookInfo book = new BookInfo();

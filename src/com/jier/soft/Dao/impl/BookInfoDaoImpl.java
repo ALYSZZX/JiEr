@@ -58,17 +58,15 @@ public class BookInfoDaoImpl implements BookInfoDao{
 	public List<BookInfo> getSelectedBooks(String limiter,String value) {
 		ArrayList<BookInfo> list = new ArrayList<BookInfo>();
 		Connection conn = null;
-		PreparedStatement stat = null;
+		Statement stat = null;
 		ResultSet rs = null;
-		
+		value="'%"+value+"%'";
 		try{
 			conn= DBUtil.getConnection();
-			String sql = "SELECT * FROM bookinfo WHERE ? LIKE '%?%' and dr ='1'";
-
-			stat=conn.prepareStatement(sql);
-			stat.setString(1,limiter);
-			stat.setString(2, value);
-			rs=stat.executeQuery();
+			String sql = "SELECT * FROM bookinfo WHERE "+limiter+" LIKE "+value;
+System.out.println(sql);
+stat = conn.createStatement();
+rs = stat.executeQuery(sql);
 			while(rs.next()){
 				BookInfo book = new BookInfo();
 				book.setBook_id(rs.getInt("book_id"));

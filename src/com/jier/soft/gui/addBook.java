@@ -3,6 +3,7 @@ package com.jier.soft.gui;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
@@ -179,10 +180,10 @@ public class addBook extends JFrame implements ActionListener {
 
 		String[] type = { "马克思主义、列宁主义、毛泽东思想、邓小平理论", "矿业工程", "哲学、宗教",
 				"石油、天然气工业", "社会科学总论", "冶金工业", "政治、法律", "金属学与金属工艺", "军事",
-				"机械、仪表工业", " 经济", "武器工业", "文化科学、教育、体育", "能源与动力工程", "语言、文字",
+				"机械、仪表工业", "经济", "武器工业", "文化科学、教育、体育", "能源与动力工程", "语言、文字",
 				"电子能技术", "文学", "电工技术", "艺术", "光线电电子学、电信技术", "历史、地理",
 				"自动化技术、计算机技术", "自然科学总论", "化学工业", "数理科学和化学", "轻工业、手工业",
-				"天文学、地球科学", "建筑科学", "生物科学", "水利工程", " 医药、卫生", "交通运输", "农业科学",
+				"天文学、地球科学", "建筑科学", "生物科学", "水利工程", "医药、卫生", "交通运输", "农业科学",
 				"航空、航天", "工业技术", "环境科学、安全科学", "一般工业技术", "综合性图书" };
 		comboBox = new JComboBox<Object>(type);
 		comboBox.setFont(new Font("SimSun", Font.PLAIN, 12));
@@ -200,29 +201,31 @@ public class addBook extends JFrame implements ActionListener {
 
 	public void add()
 	{
-		BookInfoAction add = new BookInfoAction();
-		BookInfo book = new BookInfo();
-		book.setBook_author(this.bookAuthor.getText().trim());
-		book.setBook_name(this.bookName.getText().trim());
-		book.setBook_count(Integer
-				.parseInt(this.bookCount.getText().trim()));
-		book.setBook_price(Double.parseDouble(this.price.getText()
-				.trim()));
-		book.setBook_type(bookType);
-		book.setBook_lend_time(Integer.parseInt(this.bookLendTime.getText()
-				.trim()));
-		book.setISBN(this.ISBN.getText());
-		book.setBook_publish(this.publishingHouse.getText());
-		book.setBook_pubtimes(Integer.parseInt(this.bookPubtimes.getText()));
-		book.setBook_remain(Integer
-				.parseInt(this.bookCount.getText().trim()));
-		/*System.out.println(book.getBook_author() + " "
-				+ book.getBook_name() + " " + book.getBook_count() + " "
-				+ book.getBook_price() + " " + book.getBook_type() + " "
-				+ book.getBook_lend_time() + " " + book.getISBN() + " "
-				+ book.getBook_publish());*/
+	
+		if(this.bookAuthor.getText().toString()!=null&&this.bookName.getText().toString()!=null&&this.bookCount.getText().toString()!=null&&this.price.getText()!=null&&bookType!=null&&this.bookLendTime.getText().toString()!=null&&this.ISBN.getText().toString()!=null&&this.publishingHouse.getText().toString()!=null&&this.bookCount.getText().toString()!=null)
+		{
+			BookInfoAction add = new BookInfoAction();
+			BookInfo book = new BookInfo();
+			book.setBook_author(this.bookAuthor.getText().trim());
+			book.setBook_name(this.bookName.getText().trim());
+			book.setBook_count(Integer
+					.parseInt(this.bookCount.getText().trim()));
+			book.setBook_price(Double.parseDouble(this.price.getText()
+					.trim()));
+			book.setBook_type(bookType);
+			book.setBook_lend_time(Integer.parseInt(this.bookLendTime.getText()
+					.trim()));
+			book.setISBN(this.ISBN.getText());
+			book.setBook_publish(this.publishingHouse.getText());
+			book.setBook_pubtimes(Integer.parseInt(this.bookPubtimes.getText()));
+			book.setBook_remain(Integer
+					.parseInt(this.bookCount.getText().trim()));
+			
 		BookInfo[] books = { book };
-		add.addBook(books);
+	add.addBook(books);
+		}
+		else 
+			JOptionPane.showMessageDialog(this, "请勿留空", "警告",JOptionPane.WARNING_MESSAGE);
 		
 	}
 	@Override

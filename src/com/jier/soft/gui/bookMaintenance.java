@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.GraphicsConfiguration;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -86,10 +87,12 @@ public class bookMaintenance extends JFrame implements ActionListener {
 		update.setActionCommand("update");
 		panel.add(update);
 		
-		JButton button_2 = new JButton("\u5220\u9664");
-		button_2.setFont(new Font("SimSun", Font.PLAIN, 12));
-		button_2.setBounds(600, 10, 100, 30);
-		panel.add(button_2);
+		JButton btnDelete = new JButton("\u5220\u9664");
+		btnDelete.setFont(new Font("SimSun", Font.PLAIN, 12));
+		btnDelete.setBounds(600, 10, 100, 30);
+		btnDelete.addActionListener(this);
+		btnDelete.setActionCommand("delete");
+		panel.add(btnDelete);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(Color.CYAN);
@@ -169,6 +172,51 @@ public class bookMaintenance extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+		if("delete".equals(e.getActionCommand()))
+		{
+			int[] getSelectedRow;
+			int key=0;
+
+			BookInfoAction delete = new BookInfoAction();
+			BookInfo book = new BookInfo();
+			ArrayList<BookInfo> list= new ArrayList<BookInfo>();
+			
+//			getSelectedRow=table.getSelectedRows();
+//			while(key!=getSelectedRow.length)
+//			{
+			key=table.getSelectedRow();
+				//从tabal重获取所选的行的各个字段
+				book.setBook_id(Integer.parseInt(table.getValueAt(key, 0).toString()));
+				book.setBook_name(table.getValueAt(key, 1).toString());
+				book.setBook_author(table.getValueAt(key, 2).toString());
+				book.setBook_type(table.getValueAt(key, 3).toString());
+				book.setBook_count(Integer
+						.parseInt(table.getValueAt(key, 4).toString()));
+				book.setBook_lend(Integer
+						.parseInt(table.getValueAt(key, 5).toString()));
+				book.setBook_remain(Integer
+						.parseInt(table.getValueAt(key, 6).toString()));
+				book.setBook_lend_time(Integer
+						.parseInt(table.getValueAt(key, 7).toString()));
+				book.setBook_lend_count(Integer
+						.parseInt(table.getValueAt(key, 8).toString()));
+				book.setBook_publish(table.getValueAt(key, 9).toString());
+				book.setISBN(table.getValueAt(key, 10).toString());
+				book.setBook_pubtimes(Integer
+						.parseInt(table.getValueAt(key, 11).toString()));
+	            book.setBook_price(Double
+	            		.parseDouble(table.getValueAt(key, 12).toString()));
+	            book.setBook_status(Integer
+						.parseInt(table.getValueAt(key, 13).toString()));   
+	            BookInfo[] books= {book};
+	      
+           delete.deleteBook(books);
+         //   this.setVisible(false);
+BookInfoAction action=new BookInfoAction();
+action.loadBook(dt);
+			
+		}
+			
 		if("add".equals(e.getActionCommand()))
 		{
 			this.setVisible(false);
@@ -177,30 +225,32 @@ public class bookMaintenance extends JFrame implements ActionListener {
 		}
 		if("search".equals(e.getActionCommand()))
 		{
+
+			 if("全部显示".equals(limiter))
+				 limiter=null;
+			 else  if("书刊名称".equals(limiter))
+				 limiter="book_name";
+				 else  if("作者姓名".equals(limiter))
+					 limiter="book_author";
+					 else  if("书刊分类".equals(limiter))
+						 limiter="book_type";
+						 else  if("ISBN编号".equals(limiter))
+							 limiter="ISBN";
+if(limiter!=null)
+{	
 			value=searchValue.getText().trim();
 			System.out.println("limiter:"+limiter+"     value:"+value);
 			BookInfoAction action=new BookInfoAction();
-			action.loadSelectedBookInfo(dt, limiter, value);;
+			action.loadSelectedBookInfo(dt, limiter, value);
+}	
 		}
 		if("typeselected".equals(e.getActionCommand()))
 		{
-			 limiter=(String) comboBox.getSelectedItem();
-		 if("全部显示".equals(limiter))
-			 
-
-			comboBox.addItem("全部显示");
-			comboBox.addItem("书刊名称");
-			comboBox.addItem("作者姓名");
-			comboBox.addItem("书刊分类");
-			comboBox.addItem("ISBN编号");
-		 
-		 
-		 
-
-			
+			 limiter=(String) comboBox.getSelectedItem();	
 		}
 		if("update".equals(e.getActionCommand()))
 		{
+			
 			int row=table.getSelectedRow();
 			if(row==-1)
 			{
