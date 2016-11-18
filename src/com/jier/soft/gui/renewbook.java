@@ -16,12 +16,18 @@ import java.awt.Color;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
 
+import com.jier.soft.Action.BookInfoAction;
+import java.awt.Font;
+
 public class renewbook extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
-	private JTextField textField_1;
 	private JTable table;
+	private JTable table_2;
+	private JTable table_1;
+	private JTextField textField_1;
+	private JTextField textField_2;
 
 	/**
 	 * Launch the application.
@@ -45,66 +51,105 @@ public class renewbook extends JFrame {
 	public renewbook() {
 		setBackground(Color.DARK_GRAY);
 		setResizable(false);
-		setTitle("\u7EED\u501F");
+		setTitle("\u501F\u4E66");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 737, 490);
+		setBounds(100, 100, 1088, 739);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel label = new JLabel("\u8BFB\u8005\u7F16\u53F7\uFF1A");
-		label.setBounds(10, 10, 72, 15);
+		JLabel label = new JLabel("\u8BFB\u8005\u7F16\u53F7 :");
+		label.setBounds(10, 10, 87, 36);
+		label.setFont(new Font("宋体", Font.PLAIN, 16));
 		contentPane.add(label);
 		
-		JLabel label_1 = new JLabel("\u4E66\u520A\u7F16\u53F7\uFF1A");
-		label_1.setBounds(10, 38, 72, 15);
-		contentPane.add(label_1);
-		
 		textField = new JTextField();
-		textField.setBounds(92, 7, 135, 21);
+		textField.setBounds(95, 8, 135, 40);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(92, 35, 135, 21);
-		contentPane.add(textField_1);
-		
 		JLabel label_2 = new JLabel("\u8BE5\u8BFB\u8005\u6240\u501F\u56FE\u4E66\uFF1A");
-		label_2.setBounds(10, 63, 125, 15);
+		label_2.setBounds(10, 113, 126, 36);
 		contentPane.add(label_2);
 		
-		String[] title = {"图书名称","出版社","读者编号","读者姓名","借出日期","借用时间","应还日期","续借次数","借出操作员","图书编号"};
+		
+		/*String[] title = {"读者标号","姓名","借阅次数","性别","出生日期","读者类型","注册日期","证件到期时间","身份证号","联系电话","电子邮件","工作单位"};
 		String[][] content = {}; 
 		
 		DefaultTableModel dt = new DefaultTableModel(content,title);
 		table = new JTable();
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 212, 688, -129);
+		scrollPane.setBounds(0, 144, 711, 311);
 		scrollPane.add(table);
 		contentPane.add(scrollPane);
 		scrollPane.setColumnHeaderView(table);
+		
+		*/
 
 		JLabel label_3 = new JLabel("\u672C\u6B21\u7EED\u501F\u56FE\u4E66\uFF1A");
-		label_3.setBounds(10, 242, 96, 15);
+		label_3.setBounds(14, 390, 158, 36);
 		contentPane.add(label_3);
 		
-		String[] title1 = {"图书编号","图书名称","出版社","借出日期","操作员"};
-		String[][] content1 = {}; 
+		JButton button = new JButton("\u786E\u8BA4\u7EED\u501F");
+		button.setBounds(910, 655, 158, 36);
+		contentPane.add(button);
 		
-		DefaultTableModel dt1 = new DefaultTableModel(content,title);
-		table = new JTable();
+		
+		String[] title = {"图书名称","作者","出版社","图书类别","图书数量","借出数量","借用次数","单价"};
+		
+		DefaultTableModel dt = new DefaultTableModel(null,title);
+		
+		BookInfoAction action = new BookInfoAction();
+		action.loadBookInfo(dt);
+		
+		table_1 = new JTable(dt);
+		JScrollPane scrollPane = new JScrollPane(table_1);
+		scrollPane.setBounds(20, 150, 1048, 240);
+		contentPane.add(scrollPane);
+		
+		String[] title1 = {"图书编号","图书名称","出版社","借出日期","操作员"};
+		
+		DefaultTableModel dt1 = new DefaultTableModel(null,title);
+		
+		
+		action.loadBookInfo(dt1);
+		
+		
+		
+		table_2 = new JTable();
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(-136, 386, 834, -129);
-		scrollPane_1.add(table);
+		scrollPane_1.setBounds(24, 439, 1044, 212);
 		contentPane.add(scrollPane_1);
-		scrollPane_1.setColumnHeaderView(table);
 		
-		JButton button = new JButton("\u501F\u4E66\u786E\u5B9A");
-		button.setBounds(605, 428, 93, 23);
-		contentPane.add(button);
+		
+		
+		scrollPane_1.setColumnHeaderView(table_2);
+		
+		JButton btnNewButton = new JButton("\u6DFB\u52A0\u4E66\u7C4D");
+		btnNewButton.setBounds(910, 393, 158, 36);
+		contentPane.add(btnNewButton);
+		
+		JLabel label_1 = new JLabel("\u8BFB\u8005\u59D3\u540D :");
+		label_1.setFont(new Font("宋体", Font.PLAIN, 16));
+		label_1.setBounds(259, 10, 87, 36);
+		contentPane.add(label_1);
+		
+		textField_1 = new JTextField();
+		textField_1.setColumns(10);
+		textField_1.setBounds(352, 6, 135, 40);
+		contentPane.add(textField_1);
+		
+		JLabel label_4 = new JLabel("\u53EF\u501F\u6570\u91CF :");
+		label_4.setFont(new Font("宋体", Font.PLAIN, 16));
+		label_4.setBounds(523, 6, 87, 36);
+		contentPane.add(label_4);
+		
+		textField_2 = new JTextField();
+		textField_2.setColumns(10);
+		textField_2.setBounds(624, 6, 135, 40);
+		contentPane.add(textField_2);
 	}
 }
