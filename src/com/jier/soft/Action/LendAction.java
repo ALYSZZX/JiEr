@@ -6,10 +6,13 @@ import javax.swing.table.DefaultTableModel;
 
 import com.jier.soft.entity.BookInfo;
 import com.jier.soft.entity.BookLend;
+import com.jier.soft.entity.Reader;
 import com.jier.soft.service.BookInfoService;
 import com.jier.soft.service.BookLendService;
+import com.jier.soft.service.ReaderService;
 import com.jier.soft.service.impl.BookInfoServiceImlpl;
 import com.jier.soft.service.impl.BookLendServiceImpl;
+import com.jier.soft.service.impl.ReaderServiceImpl;
 
 public class LendAction {
 
@@ -33,10 +36,18 @@ public class LendAction {
 	
 	/***
 	 *添加借书记录 
+	 * @return 
 	 */
-	public void addLend(BookLend[] lends){
+	public boolean addLend(BookLend[] lends){
 		BookLendService service = new BookLendServiceImpl();
-		service.addBookLend(lends);
+		return service.addBookLend(lends);
 		
+	}
+	//获取读者
+	public Reader getReader(String queryA,String queryF){
+		ReaderService service = new ReaderServiceImpl();
+		List<Reader> list =service.queryReader(queryA, queryF);
+		Reader reader = list.get(0);
+		return reader;
 	}
 }

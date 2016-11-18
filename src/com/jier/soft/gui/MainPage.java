@@ -678,6 +678,8 @@ public class MainPage extends JFrame implements ActionListener {
 
 		JButton lendBook = new JButton("\u501F\u9605\u56FE\u4E66");
 		lendBook.setBounds(72, 65, 102, 48);
+		lendBook.addActionListener(this);
+		lendBook.setActionCommand("lendBook");
 		lendBook.setFont(new Font("幼圆", Font.BOLD, 16));
 
 		JButton returnBook = new JButton("\u5F52\u8FD8\u56FE\u4E66");
@@ -719,7 +721,7 @@ public class MainPage extends JFrame implements ActionListener {
 		systemTime.setBounds(1135, 10, 212, 15);
 		panel_1.add(systemTime);
 
-		Image image = new ImageIcon("image/maintitle.png").getImage();
+		Image image = new ImageIcon("source/1.png").getImage();
 		JPanel panel_8 = new panelWithBackground(image);
 		panel_8.setBackground(new Color(255, 0, 255));
 		panel_8.setBounds(0, 0, 1376, 59);
@@ -727,12 +729,8 @@ public class MainPage extends JFrame implements ActionListener {
 
 		JButton button = new JButton(
 				"    JiEr \u56FE \u4E66 \u7BA1 \u7406 \u7CFB \u7EDF   ");
-		button.setForeground(Color.BLACK);
-		button.setFont(new Font("幼圆", Font.BOLD, 20));
-		//button.setBounds(550, 0, 300, 59);
-		button.setBounds(500, 0, 400, 59);
-		button.setFocusPainted(false);
-		button.setBorderPainted(false);
+		button.setFont(new Font("幼圆", Font.BOLD, 16));
+		button.setBounds(550, 0, 300, 59);
 		Color c=new Color(0,0,255);//背影颜色随便设任意值,只起占位作用。  
 		button.setBackground(c);
 		button.setOpaque(false);//设置背景透明  
@@ -814,6 +812,10 @@ public class MainPage extends JFrame implements ActionListener {
 		if("readerinfo".equals(e.getActionCommand())){
 			ReaderInfo readeri = new ReaderInfo();
 			readeri.setVisible(true);
+		}
+		if("lendBook".equals(e.getActionCommand())){
+			lendbook lend = new lendbook();
+			lend.setVisible(true);
 		}
 	}
 }
