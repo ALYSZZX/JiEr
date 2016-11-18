@@ -14,4 +14,6 @@ public interface ReaderDao {
 	public boolean updateReader(Reader[] readers);
 	//删除读者
 	public boolean deleteReader(int[] ids);
+	//按条件查询读者
+	public List<Reader> queryReader(String queryA,String queryF);
 }

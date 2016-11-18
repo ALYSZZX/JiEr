@@ -132,4 +132,39 @@ public class ReaderDaoImpl implements ReaderDao{
 		return flagg;
 	}
 
+	@Override
+	public List<Reader> queryReader(String queryA, String queryF) {
+		ArrayList<Reader> list = new ArrayList<Reader>();
+		Connection conn = null;
+		Statement stat = null;
+		ResultSet rs = null;
+		
+		try{
+			conn= DBUtil.getConnection();
+			String sql = "select * from reader where dr=1 and "+queryA+" like '%"+queryF+"%'";
+			stat = conn.createStatement();
+			rs = stat.executeQuery(sql);
+			while(rs.next()){
+				Reader reader = new Reader();
+				reader.setReader_id(rs.getInt("reader_id"));
+				reader.setReader_number(rs.getInt("reader_number"));
+				reader.setReader_name(rs.getString("reader_name"));
+				reader.setReader_money(rs.getDouble("reader_money"));
+				reader.setReader_type(rs.getString("reader_type"));
+				reader.setReader_book_conut(rs.getInt("reader_book_count"));
+				reader.setReader_count(rs.getInt("reader_count"));
+				reader.setReader_phone(rs.getString("reader_phone"));
+				reader.setReader_email(rs.getString("reader_email"));
+				reader.setReader_status(rs.getInt("reader_status"));
+				list.add(reader);
+			}
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			DBUtil.close(conn, stat, rs);	
+		}
+		return list;
+	}
+
 }

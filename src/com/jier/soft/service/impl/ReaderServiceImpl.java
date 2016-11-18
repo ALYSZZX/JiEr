@@ -34,4 +34,9 @@ public class ReaderServiceImpl implements ReaderService{
 		return dao.updateReader(readers);
 	}
 
+	@Override
+	public List<Reader> queryReader(String queryA, String queryF) {
+		return dao.queryReader(queryA,queryF);
+	}
+
 }
