@@ -10,8 +10,9 @@ public class Reader {
 	private String reader_name;
 	//读者账户余额
 	private double reader_money;
+	//读者类型
 	private String reader_type;
-	//已借书籍书
+	//已借书籍数
 	private int reader_book_conut;
 	//总借书次数
 	private int reader_count;

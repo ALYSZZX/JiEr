@@ -9,7 +9,7 @@ public interface ReaderService {
 			//查询所有读者
 			public List<Reader> getAllReaders();
 			//删除读者
-			public boolean deleteReader(Reader[] readers);
+			public boolean deleteReader(int[] ids);
 			//添加读者
 			public boolean addReader(Reader[] readers);
 			//更新读者信息

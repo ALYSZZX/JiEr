@@ -17,9 +17,9 @@ public class ReaderServiceImpl implements ReaderService{
 	}
 
 	@Override
-	public boolean deleteReader(Reader[] readers) {
+	public boolean deleteReader(int[] ids) {
 		// TODO Auto-generated method stub
-		return dao.deleteReader(readers);
+		return dao.deleteReader(ids);
 	}
 
 	@Override

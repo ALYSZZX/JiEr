@@ -86,12 +86,6 @@ public class ReaderDaoImpl implements ReaderDao{
 
 	@Override
 	public boolean updateReader(Reader[] readers) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean deleteReader(Reader[] readers) {
 		Connection conn = null;
 		Statement stat = null;
 		boolean flagg = true;
@@ -99,7 +93,32 @@ public class ReaderDaoImpl implements ReaderDao{
 			conn= DBUtil.getConnection();
 			stat=conn.createStatement();
 			for(Reader reader :readers){
-				String sql = "update bookinfo set dr=0 where book_id='"+reader.getReader_id()+"'";
+				String sql = "update reader set  reader_type ='"+reader.getReader_type()+"' ,reader_phone = '"+reader.getReader_phone()+"' ,reader_email='"+reader.getReader_email()+"' ,reader_money='"+
+						reader.getReader_money()+"' , reader_status='"+reader.getReader_status()+"' where reader_id='"+reader.getReader_id()+"'";
+				System.out.println(sql);
+				int flag = stat.executeUpdate(sql);
+				if(flag<=0)
+					flagg = false;
+			}
+		}catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			DBUtil.close(conn, stat, null);
+		}
+		return flagg;
+	}
+
+	@Override
+	public boolean deleteReader(int[] ids) {
+		Connection conn = null;
+		Statement stat = null;
+		boolean flagg = true;
+		try{
+			conn= DBUtil.getConnection();
+			stat=conn.createStatement();
+			for(int id :ids){
+				String sql = "update reader set dr=0 where reader_id='"+id+"'";
 				int flag = stat.executeUpdate(sql);
 				if(flag<=0)
 					flagg = false;

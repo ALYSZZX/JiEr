@@ -13,5 +13,5 @@ public interface ReaderDao {
 	//更新读者
 	public boolean updateReader(Reader[] readers);
 	//删除读者
-	public boolean deleteReader(Reader[] reader);
+	public boolean deleteReader(int[] ids);
 }

@@ -277,6 +277,8 @@ public class MainPage extends JFrame implements ActionListener {
 		JButton button_9 = new JButton("读者信息维护");
 		button_9.setFont(new Font("SimSun", Font.PLAIN, 12));
 		button_9.setBounds(60, 20, 120, 25);
+		button_9.addActionListener(this);
+		button_9.setActionCommand("readerinfo");
 		panel_3.add(button_9);
 
 		JButton button_10 = new JButton("读者押金管理");
@@ -804,6 +806,10 @@ public class MainPage extends JFrame implements ActionListener {
 			//系统购买
 			SystemHelp help = new SystemHelp();
 			help.setVisible(true);
+		}
+		if("readerinfo".equals(e.getActionCommand())){
+			ReaderInfo readeri = new ReaderInfo();
+			readeri.setVisible(true);
 		}
 	}
 }

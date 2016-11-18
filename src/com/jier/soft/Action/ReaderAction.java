@@ -4,27 +4,28 @@ import java.util.List;
 
 import javax.swing.table.DefaultTableModel;
 
-import com.jier.soft.entity.BookInfo;
 import com.jier.soft.entity.Reader;
-import com.jier.soft.service.BookInfoService;
 import com.jier.soft.service.ReaderService;
-import com.jier.soft.service.impl.BookInfoServiceImlpl;
 import com.jier.soft.service.impl.ReaderServiceImpl;
 
 public class ReaderAction {
 
+	private ReaderService service = new ReaderServiceImpl();
 	/***
 	 * 加载读者数据
 	 */
 	public void loadReader(DefaultTableModel dt){
 		
 		//从Service中获取数据
-		ReaderService service = new ReaderServiceImpl();
 		List<Reader> list = service.getAllReaders();
 		
 		for(int i =0; i < list.size(); i++){
 			Reader reader = list.get(i);
-			Object[] obj ={reader.getReader_id(),reader.getReader_name(),reader.getReader_count(),reader.getReader_type(),reader.getReader_money() };//具体加载的行
+			 String status = "正常(1)";
+			 if(reader.getReader_status() == 0)
+				 status = "挂失(0)";
+			 // "读者学(工)号", "读者姓名","读者类型","读者手机","读者邮箱","已借阅次数","总借阅次数","账户余额","读者状态" 
+			Object[] obj ={reader.getReader_id(),reader.getReader_number(),reader.getReader_name(),reader.getReader_type(),reader.getReader_phone(),reader.getReader_email(),reader.getReader_book_conut(),reader.getReader_count(),reader.getReader_money(),status};//具体加载的行
 			dt.addRow(obj);
 		}
 		
@@ -42,18 +43,27 @@ public class ReaderAction {
 	}
 
 	/***
-	 * 删除图书
+	 * 删除读者
+	 * @return 
 	 */
-	public void deleteReader(Reader[] readers) {
-		ReaderService service = new ReaderServiceImpl();
-		service.deleteReader(readers);
+	public boolean deleteReader(int[] ids) {
+		return service.deleteReader(ids);
 	}
 
 	/***
 	 * 添加读者
+	 * @return 
 	 */
-	public void addReader(Reader[] readers) {
-		ReaderService service = new ReaderServiceImpl();
-		service.addReader(readers);
+	public boolean addReader(Reader[] readers) {
+		return service.addReader(readers);
 	}
+	
+	/****
+	 *修改读者信息 
+	 *
+	 */
+	public boolean updateReader(Reader[] readers){
+		return service.updateReader(readers); 
+	}
+	
 }
