@@ -60,8 +60,6 @@ public class addBook extends JFrame implements ActionListener {
 	 */
 	public addBook() {
 		setTitle("\u65B0\u589E\u4E66\u520A\u4FE1\u606F");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		;
 		this.setSize(600, 400);
 		Centre.centre(this, 600, 400);
 		this.setResizable(false);

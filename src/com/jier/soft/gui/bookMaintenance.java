@@ -4,10 +4,12 @@ import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.GraphicsConfiguration;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -23,7 +25,10 @@ import javax.swing.table.DefaultTableModel;
 
 import com.jier.soft.Action.BookInfoAction;
 import com.jier.soft.Util.Centre;
+import com.jier.soft.Util.panelWithBackground;
 import com.jier.soft.entity.BookInfo;
+
+import javax.swing.JSeparator;
 
 public class bookMaintenance extends JFrame implements ActionListener {
 
@@ -67,47 +72,51 @@ public class bookMaintenance extends JFrame implements ActionListener {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JPanel panel = new JPanel();
+		Image image1 = new ImageIcon("image/absoft.png").getImage();
+		JPanel panel = new panelWithBackground(image1);
+		//JPanel panel = new JPanel();
 		panel.setBackground(Color.BLUE);
-		panel.setBounds(0, 0, 794, 49);
+		panel.setBounds(0, 0, 794, 57);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
 		JButton add = new JButton("\u589E\u52A0");
+
+		add.setFocusPainted(false);
 		add.setFont(new Font("SimSun", Font.PLAIN, 12));
-		add.setBounds(100, 10, 100, 30);
+		add.setBounds(98, 17, 100, 30);
 		add.addActionListener(this);
 		add.setActionCommand("add");
 		panel.add(add);
 		
 		JButton update = new JButton("\u4FEE\u6539");
 		update.setFont(new Font("SimSun", Font.PLAIN, 12));
-		update.setBounds(350, 10, 100, 30);
+		update.setBounds(348, 17, 100, 30);
 		update.addActionListener(this);
 		update.setActionCommand("update");
 		panel.add(update);
 		
 		JButton btnDelete = new JButton("\u5220\u9664");
 		btnDelete.setFont(new Font("SimSun", Font.PLAIN, 12));
-		btnDelete.setBounds(600, 10, 100, 30);
+		btnDelete.setBounds(598, 17, 100, 30);
 		btnDelete.addActionListener(this);
 		btnDelete.setActionCommand("delete");
 		panel.add(btnDelete);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(Color.CYAN);
-		panel_1.setBounds(0, 48, 794, 40);
+		panel_1.setBounds(0, 59, 794, 57);
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("\u9009\u62E9\u67E5\u8BE2\u65B9\u5F0F\uFF1A");
 		lblNewLabel.setFont(new Font("SimSun", Font.PLAIN, 12));
-		lblNewLabel.setBounds(43, 10, 95, 20);
+		lblNewLabel.setBounds(44, 12, 95, 20);
 		panel_1.add(lblNewLabel);
 		
 		comboBox = new JComboBox<String>();
 		comboBox.setFont(new Font("SimSun", Font.PLAIN, 12));
-		comboBox.setBounds(132, 10, 144, 20);
+		comboBox.setBounds(133, 12, 144, 20);
 		comboBox.addItem("全部显示");
 		comboBox.addItem("书刊名称");
 		comboBox.addItem("作者姓名");
@@ -119,23 +128,23 @@ public class bookMaintenance extends JFrame implements ActionListener {
 		panel_1.add(comboBox);
 		JLabel label = new JLabel("\u8F93\u5165\u67E5\u8BE2\u4FE1\u606F\uFF1A");
 		label.setFont(new Font("宋体", Font.PLAIN, 12));
-		label.setBounds(343, 10, 95, 20);
+		label.setBounds(344, 12, 95, 20);
 		panel_1.add(label);
 		
 		JButton btnSearch = new JButton("\u67E5\u8BE2");
 		btnSearch.setFont(new Font("SimSun", Font.PLAIN, 12));
-		btnSearch.setBounds(662, 8, 80, 25);
+		btnSearch.setBounds(663, 10, 80, 25);
 		btnSearch.addActionListener(this);
 		btnSearch.setActionCommand("search");
 		panel_1.add(btnSearch);
 		
 		searchValue = new JTextField();
-		searchValue.setBounds(448, 10, 160, 20);
+		searchValue.setBounds(449, 12, 160, 20);
 		panel_1.add(searchValue);
 		searchValue.setColumns(10);
 		
 		JPanel panel_2 = new JPanel();
-		panel_2.setBounds(0, 86, 804, 508);
+		panel_2.setBounds(0, 115, 804, 456);
 		contentPane.add(panel_2);
 		panel_2.setLayout(null);
 		
@@ -165,8 +174,12 @@ public class bookMaintenance extends JFrame implements ActionListener {
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 		
-		scrollPane.setBounds(0, 0, 794, 486);
+		scrollPane.setBounds(0, 0, 794, 456);
 		panel_2.add(scrollPane);
+		
+		JSeparator separator = new JSeparator();
+		separator.setBounds(0, 58, 794, 10);
+		contentPane.add(separator);
 	}
 
 	@Override
