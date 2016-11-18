@@ -14,6 +14,10 @@ public class BookInfoServiceImlpl implements BookInfoService{
 	public List<BookInfo> getAllBooks() {		
 		return dao.getAllBooks();
 	}
+	public List<BookInfo> getSelectedBooks(String limiter,String value)
+	{
+		return dao.getSelectedBooks(limiter,value);
+	}
 
 	@Override
 	public boolean deleteBook(BookInfo[] books) {

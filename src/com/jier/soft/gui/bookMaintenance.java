@@ -3,11 +3,15 @@ package com.jier.soft.gui;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.GraphicsConfiguration;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -18,17 +22,21 @@ import javax.swing.table.DefaultTableModel;
 
 import com.jier.soft.Action.BookInfoAction;
 import com.jier.soft.Util.Centre;
+import com.jier.soft.entity.BookInfo;
 
-public class bookMaintenance extends JFrame {
+public class bookMaintenance extends JFrame implements ActionListener {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -5525047071968833741L;
 	private JPanel contentPane;
-	private JTextField textField;
+	private JTextField searchValue;
 	DefaultTableModel dt;
 	private JTable table;
+	private String value;
+	private String limiter;
+	private JComboBox<String> comboBox; 
 	/**
 	 * Launch the application.
 	 */
@@ -64,15 +72,22 @@ public class bookMaintenance extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		JButton button = new JButton("\u589E\u52A0");
-		button.setBounds(100, 10, 100, 30);
-		panel.add(button);
+		JButton add = new JButton("\u589E\u52A0");
+		add.setFont(new Font("SimSun", Font.PLAIN, 12));
+		add.setBounds(100, 10, 100, 30);
+		add.addActionListener(this);
+		add.setActionCommand("add");
+		panel.add(add);
 		
-		JButton button_1 = new JButton("\u4FEE\u6539");
-		button_1.setBounds(350, 10, 100, 30);
-		panel.add(button_1);
+		JButton update = new JButton("\u4FEE\u6539");
+		update.setFont(new Font("SimSun", Font.PLAIN, 12));
+		update.setBounds(350, 10, 100, 30);
+		update.addActionListener(this);
+		update.setActionCommand("update");
+		panel.add(update);
 		
 		JButton button_2 = new JButton("\u5220\u9664");
+		button_2.setFont(new Font("SimSun", Font.PLAIN, 12));
 		button_2.setBounds(600, 10, 100, 30);
 		panel.add(button_2);
 		
@@ -87,18 +102,16 @@ public class bookMaintenance extends JFrame {
 		lblNewLabel.setBounds(43, 10, 95, 20);
 		panel_1.add(lblNewLabel);
 		
-		JComboBox<String> comboBox = new JComboBox<String>();
+		comboBox = new JComboBox<String>();
+		comboBox.setFont(new Font("SimSun", Font.PLAIN, 12));
 		comboBox.setBounds(132, 10, 144, 20);
-		comboBox.addItem("任意方式");
-		comboBox.addItem("书刊编号");
+		comboBox.addItem("全部显示");
 		comboBox.addItem("书刊名称");
 		comboBox.addItem("作者姓名");
-		comboBox.addItem("书刊条码");
-		comboBox.addItem("出版单位");
 		comboBox.addItem("书刊分类");
 		comboBox.addItem("ISBN编号");
-		
-		
+		comboBox.addActionListener(this);
+		comboBox.setActionCommand("typeselected");		
 		
 		panel_1.add(comboBox);
 		JLabel label = new JLabel("\u8F93\u5165\u67E5\u8BE2\u4FE1\u606F\uFF1A");
@@ -106,14 +119,17 @@ public class bookMaintenance extends JFrame {
 		label.setBounds(343, 10, 95, 20);
 		panel_1.add(label);
 		
-		JButton btnNewButton = new JButton("\u67E5\u8BE2");
-		btnNewButton.setBounds(662, 8, 80, 25);
-		panel_1.add(btnNewButton);
+		JButton btnSearch = new JButton("\u67E5\u8BE2");
+		btnSearch.setFont(new Font("SimSun", Font.PLAIN, 12));
+		btnSearch.setBounds(662, 8, 80, 25);
+		btnSearch.addActionListener(this);
+		btnSearch.setActionCommand("search");
+		panel_1.add(btnSearch);
 		
-		textField = new JTextField();
-		textField.setBounds(448, 10, 160, 20);
-		panel_1.add(textField);
-		textField.setColumns(10);
+		searchValue = new JTextField();
+		searchValue.setBounds(448, 10, 160, 20);
+		panel_1.add(searchValue);
+		searchValue.setColumns(10);
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBounds(0, 86, 804, 508);
@@ -122,7 +138,7 @@ public class bookMaintenance extends JFrame {
 		
 		
 		String[] title = {
-				"图书名称","作者","图书分类","总册数","借出册数","剩余册数","可借用时间","借出次数","出版社","I S B N","出版次数","单价","状态"};
+				"图书编号","图书名称 ","作者","图书分类","总册数","借出册数","剩余册数","可借用时间","借出次数","出版社","I S B N","出版次数","单价","状态"};
 		dt = new DefaultTableModel(null,title);	
 		BookInfoAction bookinfo=new BookInfoAction();
 		bookinfo.loadBookInfo(dt);
@@ -132,7 +148,8 @@ public class bookMaintenance extends JFrame {
 		
 		
 		
-		/*setAutoResizeMode:设定表的自动调整，AUTO_RESIZE_OFF  不自动调整列的宽度；使用滚动条。
+		/*setAutoResizeMode:设定表的自动调整，
+		AUTO_RESIZE_OFF  不自动调整列的宽度；使用滚动条。
 		AUTO_RESIZE_NEXT_COLUMN  在 UI 中调整列时，对其下一列进行相反方向的调整。
 		AUTO_RESIZE_SUBSEQUENT_COLUMNS  在 UI 调整中，更改后续列以保持总宽度不变，这是默认的行为。
 		AUTO_RESIZE_LAST_COLUMN  在所有的调整大小操作中，只对最后一列进行调整。
@@ -147,5 +164,84 @@ public class bookMaintenance extends JFrame {
 		
 		scrollPane.setBounds(0, 0, 794, 486);
 		panel_2.add(scrollPane);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		if("add".equals(e.getActionCommand()))
+		{
+			this.setVisible(false);
+			addBook add=new addBook();
+			add.setVisible(true);
+		}
+		if("search".equals(e.getActionCommand()))
+		{
+			value=searchValue.getText().trim();
+			System.out.println("limiter:"+limiter+"     value:"+value);
+			BookInfoAction action=new BookInfoAction();
+			action.loadSelectedBookInfo(dt, limiter, value);;
+		}
+		if("typeselected".equals(e.getActionCommand()))
+		{
+			 limiter=(String) comboBox.getSelectedItem();
+		 if("全部显示".equals(limiter))
+			 
+
+			comboBox.addItem("全部显示");
+			comboBox.addItem("书刊名称");
+			comboBox.addItem("作者姓名");
+			comboBox.addItem("书刊分类");
+			comboBox.addItem("ISBN编号");
+		 
+		 
+		 
+
+			
+		}
+		if("update".equals(e.getActionCommand()))
+		{
+			int row=table.getSelectedRow();
+			if(row==-1)
+			{
+				JOptionPane.showMessageDialog(this, "请在列表中点击需要修改的项", "请选择",JOptionPane.WARNING_MESSAGE);
+			}
+			else
+			{
+            System.out.println(row);
+        	BookInfoAction add = new BookInfoAction();
+			BookInfo book = new BookInfo();
+			
+			BookInfo[] books = { book };
+			
+			//从tabal重获取所选的行的各个字段
+			book.setBook_id(Integer.parseInt(table.getValueAt(row, 0).toString()));
+			book.setBook_name(table.getValueAt(row, 1).toString());
+			book.setBook_author(table.getValueAt(row, 2).toString());
+			book.setBook_type(table.getValueAt(row, 3).toString());
+			book.setBook_count(Integer
+					.parseInt(table.getValueAt(row, 4).toString()));
+			book.setBook_lend(Integer
+					.parseInt(table.getValueAt(row, 5).toString()));
+			book.setBook_remain(Integer
+					.parseInt(table.getValueAt(row, 6).toString()));
+			book.setBook_lend_time(Integer
+					.parseInt(table.getValueAt(row, 7).toString()));
+			book.setBook_lend_count(Integer
+					.parseInt(table.getValueAt(row, 8).toString()));
+			book.setBook_publish(table.getValueAt(row, 9).toString());
+			book.setISBN(table.getValueAt(row, 10).toString());
+			book.setBook_pubtimes(Integer
+					.parseInt(table.getValueAt(row, 11).toString()));
+            book.setBook_price(Double
+            		.parseDouble(table.getValueAt(row, 12).toString()));
+            book.setBook_status(Integer
+					.parseInt(table.getValueAt(row, 13).toString()));
+            //打开updateBook的窗口，并隐藏本窗口
+            updateBook update=new updateBook(book);
+            this.setVisible(false);
+			update.setVisible(true);
+			}
+		}
 	}
 }

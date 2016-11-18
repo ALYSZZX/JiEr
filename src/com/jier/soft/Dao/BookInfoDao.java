@@ -14,4 +14,6 @@ public interface BookInfoDao {
 	public boolean addBook(BookInfo[] books);
 	//更新书籍信息
 	public boolean updateBook(BookInfo[] books);
+	//按指定信息查询书籍
+	public List<BookInfo> getSelectedBooks(String limiter,String value);
 }

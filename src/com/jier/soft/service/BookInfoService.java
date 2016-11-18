@@ -14,4 +14,5 @@ public interface BookInfoService {
 		public boolean addBook(BookInfo[] books);
 		//更新书籍信息
 		public boolean updateBook(BookInfo[] books);
+		public List<BookInfo> getSelectedBooks(String limiter,String value);
 }
